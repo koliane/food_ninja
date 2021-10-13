@@ -3,7 +3,9 @@ import 'package:food_ninja/core/application/bootstrap/bootstrap.dart';
 import 'package:food_ninja/state/bootstrap/state_bootstrap.dart';
 import 'package:food_ninja/state/routes/routes.dart';
 import 'package:food_ninja/ui/bootstrap/ui_bootstrap.dart';
+import 'package:food_ninja/ui/styles/default/theme.dart';
 import 'package:food_ninja/ui/widgets/pages/main_page/main_page.dart';
+import 'package:food_ninja/ui/widgets/pages/splash_screen_page/splash_screen_page.dart';
 import 'package:food_ninja/ui/widgets/service/app/app_global_keys.dart';
 
 
@@ -26,14 +28,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: primaryThemeData,
       navigatorKey: AppGlobalKeys.rootNavigatorKey,
 
-      initialRoute: Routes.main,
+      initialRoute: Routes.splashScreen,
       routes: {
-        Routes.main: (_) => const MainPage()
+        Routes.main: (_) => const MainPage(),
+        Routes.splashScreen: (_) => const SplashScreenPage(),
       },
     );
   }
