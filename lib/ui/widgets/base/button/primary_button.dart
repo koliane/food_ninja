@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_ninja/ui/styles/default/gradient.dart';
+import 'package:food_ninja/ui/styles/default/radius.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;
@@ -8,7 +10,7 @@ class PrimaryButton extends StatelessWidget {
     this.text,
     {
       Key? key,
-      required this.onPressed
+      this.onPressed
     }
   ) : super(key: key);
 
@@ -23,12 +25,9 @@ class PrimaryButton extends StatelessWidget {
         height: 57,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Color(0xFF53E88B),
-              Color(0xFF15BE77)
-            ]
+            colors: primaryGradientColors
           ),
-          borderRadius: BorderRadius.all(Radius.circular(15))
+          borderRadius: BorderRadius.all(Radius.circular(primaryRadius))
         ),
         child: Text(text, style: Theme.of(context).primaryTextTheme.bodyText2),
       ),

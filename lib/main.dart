@@ -4,6 +4,7 @@ import 'package:food_ninja/state/bootstrap/state_bootstrap.dart';
 import 'package:food_ninja/state/routes/routes.dart';
 import 'package:food_ninja/ui/bootstrap/ui_bootstrap.dart';
 import 'package:food_ninja/ui/styles/default/theme.dart';
+import 'package:food_ninja/ui/widgets/pages/auth/login_page.dart';
 import 'package:food_ninja/ui/widgets/pages/main_page/main_page.dart';
 import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_delivery_page.dart';
 import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_find_food_page.dart';
@@ -33,12 +34,14 @@ class MyApp extends StatelessWidget {
       theme: primaryThemeData,
       navigatorKey: AppGlobalKeys.rootNavigatorKey,
 
-      initialRoute: Routes.onboarding,
+      // initialRoute: Routes.splashScreen,
+      initialRoute: Routes.login,
       routes: {
         Routes.main: (_) => const MainPage(),
         Routes.splashScreen: (_) => const SplashScreenPage(),
         Routes.onboarding: (_) => const OnboardingFindFoodPage(),
         // Routes.onboarding: (_) => const OnboardingDeliveryPage(),
+        Routes.login: (_) => const LoginPage(),
       },
     );
   }

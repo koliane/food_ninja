@@ -3,8 +3,8 @@ import 'package:food_ninja/ui/styles/default/color.dart';
 
 final primaryThemeData = ThemeData(
   scaffoldBackgroundColor: const Color(primaryBackgroundColor),
-  textTheme: const TextTheme(
 
+  textTheme: const TextTheme(
     headline3: TextStyle(
       fontSize: 22,
       fontWeight: FontWeight.w700,
@@ -12,6 +12,14 @@ final primaryThemeData = ThemeData(
       color: Color(primaryBlackColor),
       package: 'food_ninja'
     ),
+    headline4: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w700,
+        height: 1.31,
+        color: Color(primaryBlackColor),
+        package: 'food_ninja'
+    ),
+
     bodyText2: TextStyle(
       fontSize: 12,
       fontWeight: FontWeight.w400,
@@ -22,8 +30,15 @@ final primaryThemeData = ThemeData(
   ),
 
   primaryTextTheme: const TextTheme(
+    bodyText1: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+        height: 1.67,
+        package: 'food_ninja'
+    ),
     bodyText2: TextStyle(
       fontSize: 16,
+      fontWeight: FontWeight.w700,
       color: Colors.white,
       package: 'food_ninja'
     ),

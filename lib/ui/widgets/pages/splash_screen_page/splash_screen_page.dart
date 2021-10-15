@@ -18,7 +18,7 @@ class SplashScreenPage extends StatelessWidget {
               children: [
                 Container(width: 500),
                 const Positioned(
-                    child: LogoLabel()
+                    child: LogoLabel(width: 190,)
                 ),
                 Positioned(
                   bottom: 200,

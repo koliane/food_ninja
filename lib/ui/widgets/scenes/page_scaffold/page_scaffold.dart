@@ -5,12 +5,14 @@ class PageScaffold extends StatefulWidget {
   final PreferredSizeWidget? appBar;
   final Widget? floatingActionButton;
   final Function? init;
+  final bool? resizeToAvoidBottomInset;
 
   const PageScaffold({
     required this.body,
     this.appBar,
     this.floatingActionButton,
     this.init,
+    this.resizeToAvoidBottomInset,
     Key? key
   }) : super(key: key);
 
@@ -36,6 +38,7 @@ class _PageScaffoldState extends State<PageScaffold> {
       body: widget.body,
       appBar: widget.appBar,
       floatingActionButton: widget.floatingActionButton,
+      resizeToAvoidBottomInset: widget.resizeToAvoidBottomInset
     );
   }
 }

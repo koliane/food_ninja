@@ -41,7 +41,7 @@ class OnboardingPage extends StatelessWidget {
                   const SizedBox(height: 45,),
 
                   PrimaryButton('Next', onPressed: null,),
-                  const SizedBox(height: 61,)
+                  const SizedBox(height: 60,)
                 ]
               ),
             )
