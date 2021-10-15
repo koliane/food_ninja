@@ -5,6 +5,7 @@ import 'package:food_ninja/state/routes/routes.dart';
 import 'package:food_ninja/ui/bootstrap/ui_bootstrap.dart';
 import 'package:food_ninja/ui/styles/default/theme.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/login_page.dart';
+import 'package:food_ninja/ui/widgets/pages/auth/registration_page.dart';
 import 'package:food_ninja/ui/widgets/pages/main_page/main_page.dart';
 import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_delivery_page.dart';
 import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_find_food_page.dart';
@@ -35,13 +36,15 @@ class MyApp extends StatelessWidget {
       navigatorKey: AppGlobalKeys.rootNavigatorKey,
 
       // initialRoute: Routes.splashScreen,
-      initialRoute: Routes.login,
+      // initialRoute: Routes.login,
+      initialRoute: Routes.registration,
       routes: {
         Routes.main: (_) => const MainPage(),
         Routes.splashScreen: (_) => const SplashScreenPage(),
         Routes.onboarding: (_) => const OnboardingFindFoodPage(),
         // Routes.onboarding: (_) => const OnboardingDeliveryPage(),
         Routes.login: (_) => const LoginPage(),
+        Routes.registration: (_) => const RegistrationPage(),
       },
     );
   }

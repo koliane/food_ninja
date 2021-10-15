@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_ninja/ui/styles/default/gradient.dart';
 import 'package:food_ninja/ui/styles/default/text_style.dart';
 import 'package:food_ninja/ui/widgets/base/button/primary_button.dart';
+import 'package:food_ninja/ui/widgets/base/button/radio_button.dart';
 import 'package:food_ninja/ui/widgets/base/input/text_input.dart';
 import 'package:food_ninja/ui/widgets/base/logo/logo_label.dart';
-import 'package:food_ninja/ui/widgets/pages/auth/components/oauth_card/oauth_card.dart';
 import 'package:food_ninja/ui/widgets/scenes/page_scaffold/page_scaffold.dart';
 
-class LoginPage extends StatelessWidget {
+class RegistrationPage extends StatelessWidget {
   static const double _mainContentHeight = 522;
 
-  const LoginPage({
+  const RegistrationPage({
     Key? key,
   }) : super(key: key);
 
@@ -66,54 +64,37 @@ class LoginPage extends StatelessWidget {
                 children: [
                   Column(
                       children: const [
-                        TextInput(placeholder: "Email",),
+                        TextInput(placeholder: "Login", prefixImage: 'assets/images/input/profile.svg', prefixCorrectiveLeftOffset: 4,),
                         SizedBox(height: 20,),
-                        TextInput(placeholder: "Password",),
+                        TextInput(placeholder: "Email", prefixImage: 'assets/images/input/message.svg', prefixCorrectiveTopOffset: -2,),
+                        SizedBox(height: 20,),
+                        TextInput(placeholder: "Password", prefixImage: 'assets/images/input/lock.svg', prefixCorrectiveTopOffset: -4,),
                       ]
                   ),
                   const SizedBox(height: 20,),
 
-                  Text('Or Continue With', style: Theme.of(context).textTheme.bodyText2?.copyWith(fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 23,),
+                  const RadioButton(text: 'Keep Me Signed In'),
+                  const SizedBox(height: 12),
+                  const RadioButton(text: 'Email Me About Special Pricing'),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: OauthCard(
-                          image: SvgPicture.asset('assets/images/social_services/facebook.svg'),
-                          text: 'Facebook',
-                          onPressed: () => print("Facebook"),
-                        ),
-                      ),
-                      const SizedBox(width: 20,),
-                      Expanded(
-                        child: OauthCard(
-                          image: SvgPicture.asset('assets/images/social_services/google.svg'),
-                          text: 'Google',
-                          onPressed: () => print("Google")
-                        ),
-                      )
-                    ],
-                  ),
                 ],
               )
             ),
 
             const SizedBox(height: 20,),
 
-            Text('Forgot Your Password?', style: getAccentTextStyle(context)),
-            // Text('Forgot Your Password?',
-            //   style: Theme.of(context).primaryTextTheme.bodyText1?.copyWith(
-            //       foreground: Paint()..shader = const LinearGradient(
-            //           colors: primaryGradientColors
-            //       ).createShader(const Rect.fromLTWH(0, 0, 125, 20))
-            //   ),
-            // ),
-            const SizedBox(height: 40,),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children:[
 
-            const PrimaryButton('Login'),
-            const SizedBox(height: 60,),
+              ]
+            ),
+            const SizedBox(height: 43,),
+
+            const PrimaryButton('Create Account'),
+            const SizedBox(height: 20,),
+            Text('already have an account?', style: getAccentTextStyle(context)),
+            const SizedBox(height: 20,),
           ],
         )
     );
