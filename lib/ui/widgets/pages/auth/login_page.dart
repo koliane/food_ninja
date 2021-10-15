@@ -21,103 +21,98 @@ class LoginPage extends StatelessWidget {
 
     return PageScaffold(
         resizeToAvoidBottomInset: false,
-        body: Container(
-          child: Column(
+        body: Column(
+          children: [
+            Expanded(
+              child: Stack(
+                alignment: Alignment.center,
+                clipBehavior: Clip.none,
+                children: [
+                  SizedBox(
+                    height: logoHeight,
+                    child: LogoLabel(height: logoHeight),
+                  ),
 
-            children: [
-              Expanded(
-                child: Container(
-                  child: Stack(
-                    alignment: Alignment.center,
-                    clipBehavior: Clip.none,
-                    children: [
-                      Container(
-                        height: logoHeight,
-                        child: LogoLabel(height: logoHeight),
+                  Positioned(
+                    bottom: 0,
+                    child: Container(
+                      foregroundDecoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            stops: [0.9, 1],
+                            colors: [
+                              Color(0x00FFFFFF),
+                              Color(0xF8FFFFFF),
+                            ]
+                        ),
                       ),
+                      child: Image.asset(
+                        'assets/images/background/background_pattern.png',
+                        width: 550,
+                      ),
+                    ),
+                  )
 
-                      Positioned(
-                        bottom: 0,
-                        child: Container(
-                          foregroundDecoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                stops: [0.9, 1],
-                                colors: [
-                                  Color(0x00FFFFFF),
-                                  Color(0xF8FFFFFF),
-                                ]
-                            ),
-                          ),
-                          child: Image.asset(
-                            'assets/images/background/background_pattern.png',
-                            width: 550,
-                          ),
+                ],
+              ),
+            ),
+            Text('Login To Your Account', style: Theme.of(context).textTheme.headline4),
+            const SizedBox(height: 43,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Column(
+                children: [
+                  Column(
+                      children: const [
+                        TextInput(placeholder: "Email",),
+                        SizedBox(height: 20,),
+                        TextInput(placeholder: "Password",),
+                      ]
+                  ),
+                  const SizedBox(height: 20,),
+
+                  Text('Or Continue With', style: Theme.of(context).textTheme.bodyText2?.copyWith(fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 23,),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: OauthCard(
+                          image: SvgPicture.asset('assets/images/social_services/facebook.svg'),
+                          text: 'Facebook',
+                          onPressed: () => print("Facebook"),
+                        ),
+                      ),
+                      const SizedBox(width: 20,),
+                      Expanded(
+                        child: OauthCard(
+                          image: SvgPicture.asset('assets/images/social_services/google.svg'),
+                          text: 'Google',
+                          onPressed: () => print("Google")
                         ),
                       )
-
                     ],
                   ),
-                ),
+                ],
+              )
+            ),
+
+            const SizedBox(height: 20,),
+
+            Text('Forgot Your Password?',
+              style: Theme.of(context).primaryTextTheme.bodyText1?.copyWith(
+                  foreground: Paint()..shader = const LinearGradient(
+                      colors: primaryGradientColors
+                  ).createShader(const Rect.fromLTWH(0, 0, 125, 20))
               ),
-              Text('Login To Your Account', style: Theme.of(context).textTheme.headline4),
-              SizedBox(height: 43,),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                child: Column(
-                  children: [
-                    Column(
-                        children: [
-                          TextInput(placeholder: "Email",),
-                          SizedBox(height: 20,),
-                          TextInput(placeholder: "Password",),
-                        ]
-                    ),
-                    SizedBox(height: 20,),
+            ),
+            const SizedBox(height: 40,),
 
-                    Text('Or Continue With', style: Theme.of(context).textTheme.bodyText2?.copyWith(fontWeight: FontWeight.bold)),
-                    SizedBox(height: 23,),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: OauthCard(
-                            image: SvgPicture.asset('assets/images/social_services/facebook.svg'),
-                            text: 'Facebook',
-                            onPressed: () => print("Facebook"),
-                          ),
-                        ),
-                        SizedBox(width: 21,),
-                        Expanded(
-                          child: OauthCard(
-                            image: SvgPicture.asset('assets/images/social_services/google.svg'),
-                            text: 'Google',
-                            onPressed: () => print("Google")
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                )
-              ),
-
-              SizedBox(height: 20,),
-
-              Text('Forgot Your Password?',
-                style: Theme.of(context).primaryTextTheme.bodyText1?.copyWith(
-                    foreground: Paint()..shader = LinearGradient(
-                        colors: primaryGradientColors
-                    ).createShader(Rect.fromLTWH(0, 0, 125, 20))
-                ),
-              ),
-              SizedBox(height: 40,),
-
-              PrimaryButton('Login', onPressed: null),
-              SizedBox(height: 60,),
-            ],
-          ),
+            const PrimaryButton('Login'),
+            const SizedBox(height: 60,),
+          ],
         )
     );
   }

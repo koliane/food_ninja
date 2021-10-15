@@ -24,19 +24,18 @@ class OauthCard extends StatelessWidget {
         height: 57,
         decoration: BoxDecoration(
           border: Border.all(
-            color: Color(outlinedColor),
+            color: const Color(outlinedColor),
           ),
           borderRadius: BorderRadius.circular(primaryRadius),
           boxShadow: primaryShadow,
           color: Colors.white
         ),
-        padding: EdgeInsets.symmetric(horizontal: 22, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          // mainAxisAlignment: MainAxisAlignment.,
           children: [
             image,
-            SizedBox(width: 13,),
+            const SizedBox(width: 13,),
             Text(text, style: Theme.of(context).textTheme.bodyText2?.copyWith(
               fontSize: 14,
               height: 1.4,
@@ -46,5 +45,5 @@ class OauthCard extends StatelessWidget {
         ),
       ),
     );
-  }lib/ui/widgets/base/button/primary_button.dart
+  }
 }

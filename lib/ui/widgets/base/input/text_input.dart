@@ -5,9 +5,9 @@ import 'package:food_ninja/ui/styles/default/shadow.dart';
 class TextInput extends StatelessWidget {
 
 
-  String? placeholder;
+  final String? placeholder;
 
-  TextInput({
+  const TextInput({
     Key? key,
     this.placeholder
   }) : super(key: key);
@@ -16,15 +16,14 @@ class TextInput extends StatelessWidget {
   Widget build(BuildContext context) {
     final inputBorder = OutlineInputBorder(
         borderRadius: BorderRadius.circular(15),
-        borderSide: BorderSide(
-            color: Color(outlinedColor),
-            width: 1
+        borderSide: const BorderSide(
+          color: Color(outlinedColor),
         )
     );
 
     return Container(
       height: 57,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         boxShadow: primaryShadow
       ),
       child: TextField(
@@ -36,16 +35,13 @@ class TextInput extends StatelessWidget {
 
           fillColor: Colors.white,
           filled: true,
-          hintText: this.placeholder,
+          hintText: placeholder,
           hintStyle: Theme.of(context).textTheme.bodyText2?.copyWith(
               fontSize: 14,
-              color: Color(placeholderColor)
-              // color: Colors.red
+              color: const Color(placeholderColor)
           ),
 
-          contentPadding: EdgeInsets.symmetric(horizontal: 28, vertical: 22),
-          // contentPadding: EdgeInsets.symmetric(horizontal: 28, vertical: 22),
-          // contentPadding: EdgeInsets.symmetric(horizontal: 28),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 28, vertical: 22),
           border: inputBorder,
           focusedBorder: inputBorder,
           enabledBorder: inputBorder
