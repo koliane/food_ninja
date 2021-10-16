@@ -3,7 +3,7 @@ import 'package:food_ninja/ui/styles/default/decoration.dart';
 import 'package:food_ninja/ui/styles/default/text_style.dart';
 import 'package:food_ninja/ui/widgets/base/button/primary_button.dart';
 import 'package:food_ninja/ui/widgets/base/button/radio_button.dart';
-import 'package:food_ninja/ui/widgets/base/input/text_input.dart';
+import 'package:food_ninja/ui/widgets/base/input/base_text_input.dart';
 import 'package:food_ninja/ui/widgets/base/logo/logo_label.dart';
 import 'package:food_ninja/ui/widgets/scenes/page_scaffold/page_scaffold.dart';
 
@@ -55,11 +55,11 @@ class RegistrationPage extends StatelessWidget {
                 children: [
                   Column(
                       children: const [
-                        TextInput(placeholder: "Login", prefixImage: 'assets/images/input/profile.svg', prefixCorrectiveLeftOffset: 4,),
+                        BaseTextInput(placeholder: "Login", prefixImage: 'assets/images/input/profile.svg', prefixCorrectiveOffset: Offset(4, 0),),
                         SizedBox(height: 20,),
-                        TextInput(placeholder: "Email", prefixImage: 'assets/images/input/message.svg', prefixCorrectiveTopOffset: -2,),
+                        BaseTextInput(placeholder: "Email", prefixImage: 'assets/images/input/message.svg', prefixCorrectiveOffset:  Offset(0, -2),),
                         SizedBox(height: 20,),
-                        TextInput(placeholder: "Password", prefixImage: 'assets/images/input/lock.svg', prefixCorrectiveTopOffset: -4,),
+                        BaseTextInput(placeholder: "Password", prefixImage: 'assets/images/input/lock.svg', prefixCorrectiveOffset:  Offset(0, -4),),
                       ]
                   ),
                   const SizedBox(height: 20,),

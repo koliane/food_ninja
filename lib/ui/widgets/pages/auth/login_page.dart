@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_ninja/ui/styles/default/decoration.dart';
 import 'package:food_ninja/ui/styles/default/text_style.dart';
 import 'package:food_ninja/ui/widgets/base/button/primary_button.dart';
-import 'package:food_ninja/ui/widgets/base/input/text_input.dart';
+import 'package:food_ninja/ui/widgets/base/input/base_text_input.dart';
 import 'package:food_ninja/ui/widgets/base/logo/logo_label.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/components/oauth_card/oauth_card.dart';
 import 'package:food_ninja/ui/widgets/scenes/page_scaffold/page_scaffold.dart';
@@ -56,9 +56,9 @@ class LoginPage extends StatelessWidget {
                 children: [
                   Column(
                       children: const [
-                        TextInput(placeholder: "Email",),
+                        BaseTextInput(placeholder: "Email",),
                         SizedBox(height: 20,),
-                        TextInput(placeholder: "Password",),
+                        BaseTextInput(placeholder: "Password",),
                       ]
                   ),
                   const SizedBox(height: 20,),

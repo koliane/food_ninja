@@ -30,7 +30,7 @@ class VerificationCodePage extends StatelessWidget {
                   boxShadow: primaryShadow
                 ),
                 child: TextField(
-
+                  autofocus: true,
                   showCursor: false,
                   style: const TextStyle(
                     fontSize: 33,
