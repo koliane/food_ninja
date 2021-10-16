@@ -20,6 +20,7 @@ class BaseTextInput extends StatelessWidget {
   final String? title;
   final Offset? titleOffset;
   final TextStyle? textStyle;
+  final bool obscureText;
 
 
   const BaseTextInput({
@@ -33,6 +34,7 @@ class BaseTextInput extends StatelessWidget {
     this.borderRadius = _defaultBorderRadius,
     this.height = _defaultHeight,
     this.textStyle,
+    this.obscureText = false,
     Key? key,
     this.placeholder
   }) : super(key: key);
@@ -75,7 +77,7 @@ class BaseTextInput extends StatelessWidget {
               fontSize: 14,
               letterSpacing: 0.5
             ),
-
+            obscureText: obscureText,
             decoration: InputDecoration(
               fillColor: Colors.white,
               filled: true,

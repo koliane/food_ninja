@@ -6,5 +6,7 @@ class Routes {
   static const registration = '/registration';
   static const readyProfileStatus = '/ready_profile_status';
   static const verificationCode = '/verification_code';
-  static const forgotPassword = '/forgotPassword';
+  static const forgotPassword = '/forgot_password';
+  static const newPassword = '/new_password';
+  static const passwordResetSuccessfulStatus = '/password_reset_successful_status';
 }

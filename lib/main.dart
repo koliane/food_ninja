@@ -6,6 +6,8 @@ import 'package:food_ninja/ui/bootstrap/ui_bootstrap.dart';
 import 'package:food_ninja/ui/styles/default/theme.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/forgot_password_page.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/login_page.dart';
+import 'package:food_ninja/ui/widgets/pages/auth/new_password_page.dart';
+import 'package:food_ninja/ui/widgets/pages/auth/password_reset_successful_status_page.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/ready_profile_status_page.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/registration_page.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/verification_code_page.dart';
@@ -43,7 +45,9 @@ class MyApp extends StatelessWidget {
       // initialRoute: Routes.registration,
       // initialRoute: Routes.readyProfileStatus,
       // initialRoute: Routes.verificationCode,
-      initialRoute: Routes.forgotPassword,
+      // initialRoute: Routes.forgotPassword,
+      initialRoute: Routes.newPassword,
+      // initialRoute: Routes.passwordResetSuccessfulStatus,
       routes: {
         Routes.main: (_) => const MainPage(),
         Routes.splashScreen: (_) => const SplashScreenPage(),
@@ -54,6 +58,8 @@ class MyApp extends StatelessWidget {
         Routes.readyProfileStatus: (_) => const ReadyProfileStatusPage(),
         Routes.verificationCode: (_) => const VerificationCodePage(),
         Routes.forgotPassword: (_) => const ForgotPasswordPage(),
+        Routes.newPassword: (_) => const NewPasswordPage(),
+        Routes.passwordResetSuccessfulStatus: (_) => const PasswordResetSuccessfulStatusPage(),
       },
     );
   }

@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:food_ninja/ui/widgets/base/button/primary_button.dart';
 import 'package:food_ninja/ui/widgets/components/app_bar/top_app_bar.dart';
@@ -26,8 +27,18 @@ class StepPage extends StatelessWidget {
             left: 0,
             child: TopAppBar()
         ),
+        Positioned(
+          top: -580,
+          left: 150,
+          child: Transform.rotate(
+            angle: 20 * math.pi / 180,
+            child: Image.asset(
+              'assets/images/background/background_pattern.png',
+              width: 500,
+            ),
+          ),
+        ),
         Container(
-          // color: Colors.green,
           padding: const EdgeInsets.only(
             top: 83,
             bottom: 117,

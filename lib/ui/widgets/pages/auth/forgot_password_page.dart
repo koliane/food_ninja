@@ -22,7 +22,6 @@ class ForgotPasswordPage extends StatelessWidget {
             children: [
               const SizedBox(height: 20,),
               Container(
-                // height: 103,
                 margin: const EdgeInsets.symmetric(horizontal: 14),
                 child: BaseTextInput(
                   height: 81,
