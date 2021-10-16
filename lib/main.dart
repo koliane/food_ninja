@@ -46,8 +46,9 @@ class MyApp extends StatelessWidget {
       // initialRoute: Routes.readyProfileStatus,
       // initialRoute: Routes.verificationCode,
       // initialRoute: Routes.forgotPassword,
-      initialRoute: Routes.newPassword,
+      // initialRoute: Routes.newPassword,
       // initialRoute: Routes.passwordResetSuccessfulStatus,
+      initialRoute: Routes.main,
       routes: {
         Routes.main: (_) => const MainPage(),
         Routes.splashScreen: (_) => const SplashScreenPage(),

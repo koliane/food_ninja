@@ -19,55 +19,65 @@ class StepPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        const Positioned(
-            top: 0,
-            left: 0,
-            child: TopAppBar()
-        ),
-        Positioned(
-          top: -580,
-          left: 150,
-          child: Transform.rotate(
-            angle: 20 * math.pi / 180,
-            child: Image.asset(
-              'assets/images/background/background_pattern.png',
-              width: 500,
+    final double topSafeAreaHeight = MediaQuery.of(context).padding.top;
+    final double screenHeight = MediaQuery.of(context).size.height;
+
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        minHeight: screenHeight
+      ),
+      child: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          const Positioned(
+              top: 0,
+              left: 0,
+              child: TopAppBar()
+          ),
+          Positioned(
+            top: -580,
+            left: 150,
+            child: Transform.rotate(
+              angle: 20 * math.pi / 180,
+              child: Image.asset(
+                'assets/images/background/background_pattern.png',
+                width: 500,
+              ),
             ),
           ),
-        ),
-        Container(
-          padding: const EdgeInsets.only(
-            top: 83,
-            bottom: 117,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 20,),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title, style: Theme.of(context).textTheme.headline1),
-                    const SizedBox(height: 20,),
-                    Text(description, style: Theme.of(context).textTheme.bodyText2),
-                  ],
+          Container(
+            // color: Colors.red,
+            padding: EdgeInsets.only(
+              top: topSafeAreaHeight == 0 ? 83 : 60 + topSafeAreaHeight,
+              bottom: 117,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 20,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(title, style: Theme.of(context).textTheme.headline1),
+                      const SizedBox(height: 20,),
+                      Text(description, style: Theme.of(context).textTheme.bodyText2),
+                    ],
+                  ),
                 ),
-              ),
 
-              child
-            ],
+                child
+              ],
+            ),
           ),
-        ),
-        Positioned(
-            bottom: 60,
-            child: PrimaryButton(buttonText)
-        )
-      ],
+          Positioned(
+              top: 660,
+              // bottom: 60,
+              child: PrimaryButton(buttonText)
+          )
+        ],
+      ),
     );
   }
 }
