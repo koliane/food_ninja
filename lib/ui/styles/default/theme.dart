@@ -5,6 +5,13 @@ final primaryThemeData = ThemeData(
   scaffoldBackgroundColor: const Color(primaryBackgroundColor),
 
   textTheme: const TextTheme(
+    headline1: TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.w700,
+        height: 1.31,
+        color: Color(primaryBlackColor),
+        package: 'food_ninja'
+    ),
     headline2: TextStyle(
         fontSize: 23,
         fontWeight: FontWeight.w700,

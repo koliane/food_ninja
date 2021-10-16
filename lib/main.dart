@@ -7,6 +7,7 @@ import 'package:food_ninja/ui/styles/default/theme.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/login_page.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/ready_profile_status_page.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/registration_page.dart';
+import 'package:food_ninja/ui/widgets/pages/auth/verification_code_page.dart';
 import 'package:food_ninja/ui/widgets/pages/main_page/main_page.dart';
 import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_delivery_page.dart';
 import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_find_food_page.dart';
@@ -39,7 +40,8 @@ class MyApp extends StatelessWidget {
       // initialRoute: Routes.splashScreen,
       // initialRoute: Routes.login,
       // initialRoute: Routes.registration,
-      initialRoute: Routes.readyProfileStatus,
+      // initialRoute: Routes.readyProfileStatus,
+      initialRoute: Routes.verificationCode,
       routes: {
         Routes.main: (_) => const MainPage(),
         Routes.splashScreen: (_) => const SplashScreenPage(),
@@ -48,6 +50,7 @@ class MyApp extends StatelessWidget {
         Routes.login: (_) => const LoginPage(),
         Routes.registration: (_) => const RegistrationPage(),
         Routes.readyProfileStatus: (_) => const ReadyProfileStatusPage(),
+        Routes.verificationCode: (_) => const VerificationCodePage(),
       },
     );
   }
