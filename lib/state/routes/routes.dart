@@ -4,4 +4,5 @@ class Routes {
   static const onboarding = '/onboarding';
   static const login = '/login';
   static const registration = '/registration';
+  static const readyProfileStatus = '/ready_profile_status';
 }

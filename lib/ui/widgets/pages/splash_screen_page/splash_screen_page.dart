@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_ninja/ui/styles/default/decoration.dart';
 import 'package:food_ninja/ui/widgets/base/logo/logo_label.dart';
 import 'package:food_ninja/ui/widgets/scenes/page_scaffold/page_scaffold.dart';
 
@@ -23,17 +24,7 @@ class SplashScreenPage extends StatelessWidget {
                 Positioned(
                   bottom: 200,
                   child: Container(
-                    foregroundDecoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          stops: [0.9, 1],
-                          colors: [
-                            Color(0x00FFFFFF),
-                            Color(0xF8FFFFFF),
-                          ]
-                      ),
-                    ),
+                    foregroundDecoration: backgroundPatternGradient,
                     child: Image.asset(
                       'assets/images/background/background_pattern.png',
                     ),

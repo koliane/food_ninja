@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_ninja/ui/styles/default/gradient.dart';
+import 'package:food_ninja/ui/styles/default/decoration.dart';
 import 'package:food_ninja/ui/styles/default/text_style.dart';
 import 'package:food_ninja/ui/widgets/base/button/primary_button.dart';
 import 'package:food_ninja/ui/widgets/base/input/text_input.dart';
@@ -37,17 +37,7 @@ class LoginPage extends StatelessWidget {
                   Positioned(
                     bottom: 0,
                     child: Container(
-                      foregroundDecoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            stops: [0.9, 1],
-                            colors: [
-                              Color(0x00FFFFFF),
-                              Color(0xF8FFFFFF),
-                            ]
-                        ),
-                      ),
+                      foregroundDecoration: backgroundPatternGradient,
                       child: Image.asset(
                         'assets/images/background/background_pattern.png',
                         width: 550,
@@ -102,14 +92,11 @@ class LoginPage extends StatelessWidget {
 
             const SizedBox(height: 20,),
 
-            Text('Forgot Your Password?', style: getAccentTextStyle(context)),
-            // Text('Forgot Your Password?',
-            //   style: Theme.of(context).primaryTextTheme.bodyText1?.copyWith(
-            //       foreground: Paint()..shader = const LinearGradient(
-            //           colors: primaryGradientColors
-            //       ).createShader(const Rect.fromLTWH(0, 0, 125, 20))
-            //   ),
-            // ),
+            Text('Forgot Your Password?', style: getAccentTextStyle(context)?.copyWith(
+                decoration: TextDecoration.underline,
+                decorationColor: const Color(0xFF36d482)
+            )),
+
             const SizedBox(height: 40,),
 
             const PrimaryButton('Login'),
