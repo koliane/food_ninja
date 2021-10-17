@@ -11,9 +11,13 @@ import 'package:food_ninja/ui/widgets/pages/auth/password_reset_successful_statu
 import 'package:food_ninja/ui/widgets/pages/auth/ready_profile_status_page.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/registration_page.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/verification_code_page.dart';
+import 'package:food_ninja/ui/widgets/pages/filter_page/filter_page.dart';
 import 'package:food_ninja/ui/widgets/pages/main_page/main_page.dart';
+import 'package:food_ninja/ui/widgets/pages/menu_page/menu_page.dart';
 import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_delivery_page.dart';
 import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_find_food_page.dart';
+import 'package:food_ninja/ui/widgets/pages/restaurant_detail_page/restaurant_detail_page.dart';
+import 'package:food_ninja/ui/widgets/pages/restaurants_page/restaurants_page.dart';
 import 'package:food_ninja/ui/widgets/pages/splash_screen_page/splash_screen_page.dart';
 import 'package:food_ninja/ui/widgets/service/app/app_global_keys.dart';
 
@@ -48,7 +52,11 @@ class MyApp extends StatelessWidget {
       // initialRoute: Routes.forgotPassword,
       // initialRoute: Routes.newPassword,
       // initialRoute: Routes.passwordResetSuccessfulStatus,
-      initialRoute: Routes.main,
+      // initialRoute: Routes.main,
+      // initialRoute: Routes.restaurants,
+      // initialRoute: Routes.menu,
+      // initialRoute: Routes.filter,
+      initialRoute: Routes.restaurantDetail,
       routes: {
         Routes.main: (_) => const MainPage(),
         Routes.splashScreen: (_) => const SplashScreenPage(),
@@ -61,6 +69,10 @@ class MyApp extends StatelessWidget {
         Routes.forgotPassword: (_) => const ForgotPasswordPage(),
         Routes.newPassword: (_) => const NewPasswordPage(),
         Routes.passwordResetSuccessfulStatus: (_) => const PasswordResetSuccessfulStatusPage(),
+        Routes.restaurants: (_) => const RestaurantsPage(),
+        Routes.menu: (_) => const MenuPage(),
+        Routes.filter: (_) => const FilterPage(),
+        Routes.restaurantDetail: (_) => const RestaurantDetailPage(),
       },
     );
   }

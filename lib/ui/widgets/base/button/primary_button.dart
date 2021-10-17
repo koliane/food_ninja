@@ -4,11 +4,13 @@ import 'package:food_ninja/ui/styles/default/radius.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;
+  final double? width;
   final VoidCallback? onPressed;
 
   const PrimaryButton(
     this.text,
     {
+      this.width,
       Key? key,
       this.onPressed
     }
@@ -21,7 +23,7 @@ class PrimaryButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         alignment: Alignment.center,
-        width: 157,
+        width: width ?? 157,
         height: 57,
         decoration: const BoxDecoration(
           gradient: LinearGradient(

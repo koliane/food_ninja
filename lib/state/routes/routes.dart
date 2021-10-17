@@ -9,4 +9,8 @@ class Routes {
   static const forgotPassword = '/forgot_password';
   static const newPassword = '/new_password';
   static const passwordResetSuccessfulStatus = '/password_reset_successful_status';
+  static const restaurants = '/restaurants';
+  static const menu = '/menu';
+  static const filter = '/filter';
+  static const restaurantDetail = '/restaurant_detail';
 }

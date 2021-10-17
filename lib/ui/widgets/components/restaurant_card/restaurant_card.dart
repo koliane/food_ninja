@@ -4,6 +4,7 @@ import 'package:food_ninja/ui/styles/default/shadow.dart';
 
 class RestaurantCard extends StatelessWidget {
   static const double _defaultHeight = 184;
+  static const double _defaultWidth = 147;
 
   final String image;
   final String title;
@@ -20,6 +21,7 @@ class RestaurantCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: _defaultHeight,
+      width: _defaultWidth,
       padding: const EdgeInsets.all(25),
       decoration: BoxDecoration(
         color: Colors.white,

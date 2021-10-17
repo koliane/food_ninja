@@ -10,6 +10,7 @@ const placeholderColor3 = 0xC9DA6317;
 
 
 const secondaryTextColor = 0xFFFF7C32;
+const secondaryTextColor2 = 0xFFDA6317;
 const accentValueColor = 0xFFFEAD1D;
 const fillWhiteColor = 0xFFFAFDFF;
 const secondaryComponentBackgroundColor = 0x19F9A84D;
