@@ -36,7 +36,7 @@ class StepPage extends StatelessWidget {
           ),
           Positioned(
             top: -580,
-            left: 150,
+            right: -250,
             child: Transform.rotate(
               angle: 20 * math.pi / 180,
               child: Image.asset(

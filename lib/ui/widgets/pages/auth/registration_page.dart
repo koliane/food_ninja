@@ -33,11 +33,11 @@ class RegistrationPage extends StatelessWidget {
                         children: [
                           Column(
                               children: const [
-                                BaseTextInput(placeholder: "Login", prefixImage: 'assets/images/input/profile.svg', prefixCorrectiveOffset: Offset(4, 0),),
+                                BaseTextInput(placeholder: "Login", prefixImage: 'assets/images/icons/profile.svg', prefixCorrectiveOffset: Offset(4, 0),),
                                 SizedBox(height: 20,),
-                                BaseTextInput(placeholder: "Email", prefixImage: 'assets/images/input/message.svg', prefixCorrectiveOffset:  Offset(0, -2),),
+                                BaseTextInput(placeholder: "Email", prefixImage: 'assets/images/icons/message.svg', prefixCorrectiveOffset:  Offset(0, -2),),
                                 SizedBox(height: 20,),
-                                BaseTextInput(placeholder: "Password", prefixImage: 'assets/images/input/lock.svg', prefixCorrectiveOffset:  Offset(0, -4),),
+                                BaseTextInput(placeholder: "Password", prefixImage: 'assets/images/icons/lock.svg', prefixCorrectiveOffset:  Offset(0, -4),),
                               ]
                           ),
                           const SizedBox(height: 20,),

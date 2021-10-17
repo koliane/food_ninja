@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_ninja/ui/widgets/scenes/base_bottom_navigation_bar/base_bottom_navigation_bar.dart';
 
 class PageScaffold extends StatefulWidget {
   final Widget body;
@@ -6,6 +7,7 @@ class PageScaffold extends StatefulWidget {
   final Widget? floatingActionButton;
   final Function? init;
   final bool? resizeToAvoidBottomInset;
+  final bool showBottomAppBar;
 
   const PageScaffold({
     required this.body,
@@ -13,6 +15,7 @@ class PageScaffold extends StatefulWidget {
     this.floatingActionButton,
     this.init,
     this.resizeToAvoidBottomInset,
+    this.showBottomAppBar = false,
     Key? key
   }) : super(key: key);
 
@@ -38,7 +41,8 @@ class _PageScaffoldState extends State<PageScaffold> {
       body: widget.body,
       appBar: widget.appBar,
       floatingActionButton: widget.floatingActionButton,
-      resizeToAvoidBottomInset: widget.resizeToAvoidBottomInset
+      resizeToAvoidBottomInset: widget.resizeToAvoidBottomInset,
+      bottomNavigationBar: widget.showBottomAppBar ? BaseBottomNavigationBar() : null,
     );
   }
 }

@@ -9,3 +9,21 @@ const primaryShadow = [
   )
 
 ];
+
+const buttonShadow = [
+  BoxShadow(
+      color: Color(buttonShadowColor),
+      offset: Offset(11, 28),
+      blurRadius: 50
+  )
+
+];
+
+const bottomAppBarShadow = [
+  BoxShadow(
+      color: Color(shadowColor),
+      offset: Offset.zero,
+      blurRadius: 50
+  )
+
+];

@@ -11,6 +11,7 @@ class BaseTextInput extends StatelessWidget {
 
 
   final String? placeholder;
+  final TextStyle? placeholderTextStyle;
   final Offset? prefixCorrectiveOffset;
   final String? prefixImage;
   final double? height;
@@ -21,6 +22,7 @@ class BaseTextInput extends StatelessWidget {
   final Offset? titleOffset;
   final TextStyle? textStyle;
   final bool obscureText;
+  final Color? fillColor;
 
 
   const BaseTextInput({
@@ -28,15 +30,16 @@ class BaseTextInput extends StatelessWidget {
     this.titleOffset,
     this.prefixImage,
     this.padding,
-    // this.prefixImageLeftOffset,
     this.prefixOffset,
     this.prefixCorrectiveOffset,
     this.borderRadius = _defaultBorderRadius,
     this.height = _defaultHeight,
     this.textStyle,
     this.obscureText = false,
+    this.placeholder,
+    this.placeholderTextStyle,
+    this.fillColor,
     Key? key,
-    this.placeholder
   }) : super(key: key);
 
   bool get _hasPrefixImage => prefixImage != null;
@@ -79,10 +82,10 @@ class BaseTextInput extends StatelessWidget {
             ),
             obscureText: obscureText,
             decoration: InputDecoration(
-              fillColor: Colors.white,
+              fillColor: fillColor ?? Colors.white,
               filled: true,
               hintText: placeholder,
-              hintStyle: Theme.of(context).textTheme.bodyText2?.copyWith(
+              hintStyle: placeholderTextStyle ?? Theme.of(context).textTheme.bodyText2?.copyWith(
                   fontSize: 14,
                   color: const Color(placeholderColor)
               ),

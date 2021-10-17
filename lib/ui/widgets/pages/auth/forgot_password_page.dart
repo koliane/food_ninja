@@ -27,7 +27,7 @@ class ForgotPasswordPage extends StatelessWidget {
                   height: 81,
                   title: 'Via email:',
                   titleOffset: const Offset(82, 6),
-                  prefixImage: 'assets/images/input/email.svg',
+                  prefixImage: 'assets/images/icons/email.svg',
                   prefixOffset: const Offset(29, 27),
                   padding: const EdgeInsets.fromLTRB(82, 43, 15, 14),
                   textStyle: Theme.of(context).textTheme.bodyText2?.copyWith(
