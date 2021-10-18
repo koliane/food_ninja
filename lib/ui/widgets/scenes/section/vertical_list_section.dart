@@ -6,11 +6,15 @@ class VerticalListSection extends StatelessWidget {
   final String title;
   final List<Widget> children;
   final String? moreLink;
+  final EdgeInsets? padding;
+  final EdgeInsets? listPadding;
 
   const VerticalListSection({
     required this.title,
     required this.children,
     this.moreLink,
+    this.padding,
+    this.listPadding,
     Key? key
   }) : super(key: key);
 
@@ -19,8 +23,9 @@ class VerticalListSection extends StatelessWidget {
     return Section(
       title: title,
       moreLink: moreLink,
+      padding: padding,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: listPadding ?? const EdgeInsets.symmetric(horizontal: 20),
         child: Builder(
           builder: (BuildContext context) {
             final List<Widget> list = [];

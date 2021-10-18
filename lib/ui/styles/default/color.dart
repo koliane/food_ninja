@@ -14,3 +14,5 @@ const secondaryTextColor2 = 0xFFDA6317;
 const accentValueColor = 0xFFFEAD1D;
 const fillWhiteColor = 0xFFFAFDFF;
 const secondaryComponentBackgroundColor = 0x19F9A84D;
+const primaryLabelColor = 0x1A35D381;
+const secondaryLabelColor = 0x1AFF1D1D;

@@ -6,11 +6,13 @@ class Section extends StatelessWidget {
   final String title;
   final Widget child;
   final String? moreLink;
+  final EdgeInsets? padding;
 
   const Section({
     required this.title,
     required this.child,
     this.moreLink,
+    this.padding,
     Key? key
   }) : super(key: key);
 
@@ -20,7 +22,7 @@ class Section extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
+          padding: padding ?? const EdgeInsets.symmetric(horizontal: 30),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

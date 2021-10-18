@@ -13,4 +13,6 @@ class Routes {
   static const menu = '/menu';
   static const filter = '/filter';
   static const restaurantDetail = '/restaurant_detail';
+  static const foodDetail = '/food_detail';
+  static const orderDetail = '/order_detail';
 }

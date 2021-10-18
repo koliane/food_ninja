@@ -12,10 +12,12 @@ import 'package:food_ninja/ui/widgets/pages/auth/ready_profile_status_page.dart'
 import 'package:food_ninja/ui/widgets/pages/auth/registration_page.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/verification_code_page.dart';
 import 'package:food_ninja/ui/widgets/pages/filter_page/filter_page.dart';
+import 'package:food_ninja/ui/widgets/pages/food_detail_page/food_detail_page.dart';
 import 'package:food_ninja/ui/widgets/pages/main_page/main_page.dart';
 import 'package:food_ninja/ui/widgets/pages/menu_page/menu_page.dart';
 import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_delivery_page.dart';
 import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_find_food_page.dart';
+import 'package:food_ninja/ui/widgets/pages/order_detail_page/order_detail_page.dart';
 import 'package:food_ninja/ui/widgets/pages/restaurant_detail_page/restaurant_detail_page.dart';
 import 'package:food_ninja/ui/widgets/pages/restaurants_page/restaurants_page.dart';
 import 'package:food_ninja/ui/widgets/pages/splash_screen_page/splash_screen_page.dart';
@@ -56,7 +58,9 @@ class MyApp extends StatelessWidget {
       // initialRoute: Routes.restaurants,
       // initialRoute: Routes.menu,
       // initialRoute: Routes.filter,
-      initialRoute: Routes.restaurantDetail,
+      // initialRoute: Routes.restaurantDetail,
+      // initialRoute: Routes.foodDetail,
+      initialRoute: Routes.orderDetail,
       routes: {
         Routes.main: (_) => const MainPage(),
         Routes.splashScreen: (_) => const SplashScreenPage(),
@@ -73,6 +77,8 @@ class MyApp extends StatelessWidget {
         Routes.menu: (_) => const MenuPage(),
         Routes.filter: (_) => const FilterPage(),
         Routes.restaurantDetail: (_) => const RestaurantDetailPage(),
+        Routes.foodDetail: (_) => const FoodDetailPage(),
+        Routes.orderDetail: (_) => const OrderDetailPage(),
       },
     );
   }

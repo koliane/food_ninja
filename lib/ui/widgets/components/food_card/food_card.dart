@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_ninja/ui/styles/default/color.dart';
 import 'package:food_ninja/ui/styles/default/radius.dart';
 import 'package:food_ninja/ui/styles/default/shadow.dart';
+import 'package:food_ninja/ui/widgets/components/image_container/card_image_container.dart';
 
 class FoodCard extends StatelessWidget {
   static const double _defaultHeight = 87;
@@ -35,17 +36,7 @@ class FoodCard extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: 64,
-                height: 64,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(image),
-                    fit: BoxFit.cover,
-                  ),
-                  borderRadius: BorderRadius.circular(10)
-                ),
-              ),
+              CardImageContainer(image: image),
               const SizedBox(width: 20,),
               Column(
                 // mainAxisSize: MainAxisSize.min,

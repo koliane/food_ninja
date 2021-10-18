@@ -1,8 +1,9 @@
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:food_ninja/ui/widgets/scenes/page_scaffold/bottom_sheet_scaffold/components/bottom_sheet/custom_bottom_cheet.dart';
 import 'package:food_ninja/ui/widgets/scenes/page_scaffold/page_scaffold.dart';
 
-class DecoratedPageScaffold extends StatelessWidget {
+class BottomSheetScaffold extends StatelessWidget {
+  final String image;
   final Widget body;
   final PreferredSizeWidget? appBar;
   final Widget? floatingActionButton;
@@ -12,7 +13,8 @@ class DecoratedPageScaffold extends StatelessWidget {
   final List<Widget>? positionedChildren;
   final Widget? bottomNavigationBar;
 
-  const DecoratedPageScaffold({
+  const BottomSheetScaffold({
+    required this.image,
     required this.body,
     this.appBar,
     this.floatingActionButton,
@@ -26,48 +28,32 @@ class DecoratedPageScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget body = getBody(context);
-
-    if(positionedChildren != null) {
-      body = Stack(
-        children: [
-          body,
-          ...positionedChildren!
-        ],
-      );
-    }
 
     return PageScaffold(
       showBottomAppBar: showBottomAppBar,
       init: init,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       bottomNavigationBar: bottomNavigationBar,
-      body: body,
-    );
-  }
-
-  Widget getBody(BuildContext context) {
-    return ListView(
-        padding: EdgeInsets.zero,
+      body: Stack(
+        clipBehavior: Clip.none,
         children: [
-          Stack(
-            children: [
-              Positioned(
-                top: -580,
-                right: -250,
-                child: Transform.rotate(
-                  angle: 20 * math.pi / 180,
-                  child: Image.asset(
-                    'assets/images/background/background_pattern.png',
-                    width: 500,
-                  ),
-                ),
-              ),
-
-              body,
-            ]
-          )
-        ]
+          Container(
+            height: 415,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(image),
+                    fit: BoxFit.cover
+                )
+            ),
+          ),
+          SingleChildScrollView(
+              padding: EdgeInsets.zero,
+              physics: BouncingScrollPhysics(),
+              child: CustomBottomSheet(child: body)
+          ),
+        ],
+      )
     );
   }
+
 }
