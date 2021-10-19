@@ -22,14 +22,15 @@ import 'package:food_ninja/ui/widgets/pages/restaurant_detail_page/restaurant_de
 import 'package:food_ninja/ui/widgets/pages/restaurants_page/restaurants_page.dart';
 import 'package:food_ninja/ui/widgets/pages/splash_screen_page/splash_screen_page.dart';
 import 'package:food_ninja/ui/widgets/service/app/app_global_keys.dart';
+// import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  Bootstrap.appInit();
-  StateBootstrap.appInit();
-  UiBootstrap.appInit();
+  // Bootstrap.appInit();
+  // StateBootstrap.appInit();
+  // UiBootstrap.appInit();
 
   runApp(const MyApp());
 }
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: Routes.login,
       // initialRoute: Routes.registration,
       // initialRoute: Routes.readyProfileStatus,
-      initialRoute: Routes.verificationCode,
+      // initialRoute: Routes.verificationCode,
       // initialRoute: Routes.forgotPassword,
       // initialRoute: Routes.newPassword,
       // initialRoute: Routes.passwordResetSuccessfulStatus,
@@ -80,6 +81,24 @@ class MyApp extends StatelessWidget {
         Routes.foodDetail: (_) => const FoodDetailPage(),
         Routes.orderDetail: (_) => const OrderDetailPage(),
       },
+
+      home: FutureBuilder(
+        // future: Init.instance.initialize(),
+        future: Future.wait([
+          Bootstrap.appInit(),
+          StateBootstrap.appInit(),
+          UiBootstrap.appInit(),
+        ]),
+        builder: (context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const SplashScreenPage();
+          }
+
+          return const LoginPage();
+        },
+      )
     );
+
+
   }
 }

@@ -15,7 +15,7 @@ class PrimaryGradientText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle = defaultTextStyle.copyWith(
-      fontSize: 19,
+      // fontSize: 19,
       fontWeight: FontWeight.bold,
       height: 1,
     );

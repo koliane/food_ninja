@@ -12,4 +12,9 @@ abstract class _RouteStore with Store, BaseRouteActions {
   @observable
   RouteAction currentRoute = RouteAction(name: Routes.main, action: RouteActionEnum.init);
 
+  @action
+  void goToRootLoginPage() {
+    pushNamedAndRemoveUntil(Routes.login);
+  }
+
 }
