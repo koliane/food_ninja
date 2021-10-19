@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:food_ninja/ui/widgets/base/button/primary_button.dart';
-import 'package:food_ninja/ui/widgets/components/app_bar/top_app_bar.dart';
+import 'package:food_ninja/ui/widgets/scenes/app_bar/top_app_bar.dart';
 
 class StepPage extends StatelessWidget {
   final String title;

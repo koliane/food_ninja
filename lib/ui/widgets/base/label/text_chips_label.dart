@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_ninja/ui/styles/default/color.dart';
-import 'package:food_ninja/ui/styles/default/text_style.dart';
+import 'package:food_ninja/ui/widgets/base/text/primary_gradient_text.dart';
 
 class TextChipsLabel extends StatelessWidget {
   final String text;
@@ -31,13 +31,12 @@ class TextChipsLabel extends StatelessWidget {
           borderRadius: BorderRadius.circular(18),
           color: const Color(primaryLabelColor)
       ),
-      child: Text(text,
-        style: getAccentTextStyle(context, textWidth ?? 45, textHeight ?? 16)?.copyWith(
+
+      child: PrimaryGradientText(text, style: TextStyle(
           height: 1,
           fontWeight: fontWeight ?? FontWeight.w600,
           fontSize: fontSize ?? 12
-        ),
-      )
+      ),),
     );
   }
 }

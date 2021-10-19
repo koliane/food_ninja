@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_ninja/ui/widgets/base/input/base_text_input.dart';
-import 'package:food_ninja/ui/widgets/pages/step_page/step_page.dart';
 import 'package:food_ninja/ui/widgets/scenes/page_scaffold/page_scaffold.dart';
+import 'package:food_ninja/ui/widgets/scenes/step_page/step_page.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
 
@@ -11,7 +11,6 @@ class ForgotPasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return PageScaffold(
       resizeToAvoidBottomInset: false,
         body: StepPage(

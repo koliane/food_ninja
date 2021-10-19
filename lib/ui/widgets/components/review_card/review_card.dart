@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_ninja/ui/styles/default/color.dart';
 import 'package:food_ninja/ui/styles/default/radius.dart';
 import 'package:food_ninja/ui/styles/default/shadow.dart';
-import 'package:food_ninja/ui/styles/default/text_style.dart';
 import 'package:food_ninja/ui/widgets/base/label/chips_label.dart';
+import 'package:food_ninja/ui/widgets/base/text/primary_gradient_text.dart';
 import 'package:food_ninja/ui/widgets/components/image_container/card_image_container.dart';
 
 class ReviewCard extends StatelessWidget {
@@ -73,13 +73,11 @@ class ReviewCard extends StatelessWidget {
                       children: [
                         SvgPicture.asset('assets/images/icons/star.svg'),
                         const SizedBox(width: 5,),
-                        Text('5',
-                          style: getAccentTextStyle(context, 10, 29)?.copyWith(
-                            height: 1,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16
-                          ),
-                        ),
+                        const PrimaryGradientText('5', style: TextStyle(
+                          height: 1,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16
+                        ),),
                       ],
                     ),
                   )

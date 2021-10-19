@@ -3,14 +3,14 @@ import 'package:flutter/rendering.dart';
 import 'section.dart';
 
 class VerticalListSection extends StatelessWidget {
-  final String title;
+  final String? title;
   final List<Widget> children;
   final String? moreLink;
   final EdgeInsets? padding;
   final EdgeInsets? listPadding;
 
   const VerticalListSection({
-    required this.title,
+    this.title,
     required this.children,
     this.moreLink,
     this.padding,

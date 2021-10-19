@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_ninja/ui/widgets/base/input/base_text_input.dart';
-import 'package:food_ninja/ui/widgets/pages/step_page/step_page.dart';
 import 'package:food_ninja/ui/widgets/scenes/page_scaffold/page_scaffold.dart';
+import 'package:food_ninja/ui/widgets/scenes/step_page/step_page.dart';
 
 class NewPasswordPage extends StatelessWidget {
 
@@ -12,9 +12,7 @@ class NewPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-
     return PageScaffold(
-      // resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
           child: StepPage(
             title: 'Reset your password\nhere',
@@ -39,16 +37,6 @@ class NewPasswordPage extends StatelessWidget {
                         obscureText: true,
                         height: 61,
                       ),
-
-
-
-                      // SizedBox(height: 60),
-                      //
-                      // BaseTextInput(
-                      //   placeholder: 'Delete',
-                      //   obscureText: true,
-                      //   height: 61,
-                      // ),
                     ],
                   ),
                 ),

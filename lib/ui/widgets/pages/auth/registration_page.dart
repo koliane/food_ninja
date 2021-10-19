@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_ninja/ui/styles/default/text_style.dart';
 import 'package:food_ninja/ui/widgets/base/button/primary_button.dart';
 import 'package:food_ninja/ui/widgets/base/button/radio_button.dart';
 import 'package:food_ninja/ui/widgets/base/input/base_text_input.dart';
+import 'package:food_ninja/ui/widgets/base/text/primary_gradient_text.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/components/top_screen_content/top_screen_content.dart';
 import 'package:food_ninja/ui/widgets/scenes/page_scaffold/page_scaffold.dart';
 
@@ -53,10 +53,11 @@ class RegistrationPage extends StatelessWidget {
 
                   const PrimaryButton('Create Account'),
                   const SizedBox(height: 20,),
-                  Text('already have an account?', style: getAccentTextStyle(context)?.copyWith(
+
+                  const PrimaryGradientText('already have an account?', style: TextStyle(
                       decoration: TextDecoration.underline,
-                      decorationColor: const Color(0xFF36d482)
-                  )),
+                  ),),
+
                   const SizedBox(height: 20,),
                 ],
               ),

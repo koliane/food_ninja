@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: Routes.login,
       // initialRoute: Routes.registration,
       // initialRoute: Routes.readyProfileStatus,
-      // initialRoute: Routes.verificationCode,
+      initialRoute: Routes.verificationCode,
       // initialRoute: Routes.forgotPassword,
       // initialRoute: Routes.newPassword,
       // initialRoute: Routes.passwordResetSuccessfulStatus,
@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: Routes.filter,
       // initialRoute: Routes.restaurantDetail,
       // initialRoute: Routes.foodDetail,
-      initialRoute: Routes.orderDetail,
+      // initialRoute: Routes.orderDetail,
       routes: {
         Routes.main: (_) => const MainPage(),
         Routes.splashScreen: (_) => const SplashScreenPage(),

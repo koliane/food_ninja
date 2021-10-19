@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_ninja/core/application/settings/settings.dart';
 import 'package:food_ninja/ui/styles/default/color.dart';
+import 'package:food_ninja/ui/styles/default/font_family.dart';
 
 final primaryThemeData = ThemeData(
   scaffoldBackgroundColor: const Color(primaryBackgroundColor),
@@ -10,28 +12,28 @@ final primaryThemeData = ThemeData(
         fontWeight: FontWeight.w700,
         height: 1.31,
         color: Color(primaryBlackColor),
-        package: 'food_ninja'
+        package: projectName
     ),
     headline2: TextStyle(
         fontSize: 23,
         fontWeight: FontWeight.w700,
         height: 1.31,
         color: Color(primaryBlackColor),
-        package: 'food_ninja'
+        package: projectName
     ),
     headline3: TextStyle(
       fontSize: 22,
       fontWeight: FontWeight.w700,
       height: 1.31,
       color: Color(primaryBlackColor),
-      package: 'food_ninja'
+      package: projectName
     ),
     headline4: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w700,
         height: 1.31,
         color: Color(primaryBlackColor),
-        package: 'food_ninja'
+        package: projectName
     ),
 
     bodyText2: TextStyle(
@@ -39,7 +41,7 @@ final primaryThemeData = ThemeData(
       fontWeight: FontWeight.w400,
       height: 1.81,
       color: Color(primaryBlackColor),
-      package: 'food_ninja'
+      package: projectName
     ),
   ),
 
@@ -48,21 +50,21 @@ final primaryThemeData = ThemeData(
         fontSize: 30,
         fontWeight: FontWeight.w700,
         height: 1.31,
-        package: 'food_ninja'
+        package: projectName
     ),
 
     bodyText1: TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w600,
         height: 1.67,
-        package: 'food_ninja'
+        package: projectName
     ),
     bodyText2: TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w700,
       color: Colors.white,
-      package: 'food_ninja'
+      package: projectName
     ),
   ),
-  fontFamily: 'BentonSans',
+  fontFamily: defaultFontFamily,
 );
