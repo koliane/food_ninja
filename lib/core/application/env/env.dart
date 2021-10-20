@@ -14,4 +14,5 @@ class Env {
   static bool get isProduction => _env == EnvEnum.prod;
 
   static bool get needToSqliteRebuild => _config.needToSqliteRebuild;
+  static String get apiBaseUrl => _config.apiBaseUrl;
 }

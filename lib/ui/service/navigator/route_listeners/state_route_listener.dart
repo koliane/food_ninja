@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:food_ninja/state/management/mobx/modules/route/internals/route_action.dart';
-import 'package:food_ninja/state/management/store_facade.dart';
+import 'package:food_ninja/state/management/state_facade.dart';
 import 'package:food_ninja/ui/service/app/app_global_keys.dart';
 
 class StateRouteListener {
@@ -16,7 +16,7 @@ class StateRouteListener {
 
   void init() {
     reaction<RouteAction>(
-      (Reaction reaction) => StoreFacade().routeStore.currentRoute,
+      (Reaction reaction) => StateFacade().route.currentRoute,
       (routeAction) {
         final NavigatorState? nav = AppGlobalKeys.rootNavigatorKey.currentState;
         if(nav == null) {

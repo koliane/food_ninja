@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_ninja/state/management/state_facade.dart';
 import 'package:food_ninja/ui/widgets/base/button/primary_button.dart';
 import 'package:food_ninja/ui/widgets/base/button/radio_button.dart';
 import 'package:food_ninja/ui/widgets/base/input/base_text_input.dart';
@@ -19,52 +20,67 @@ class RegistrationPage extends StatelessWidget {
     final double topFreeSpace = screenHeight - _mainContentHeight;
 
     return PageScaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              TopScreenContent(freeSpace: topFreeSpace),
-              Column(
-                children: [
-                  Text('Login To Your Account', style: Theme.of(context).textTheme.headline4),
-                  const SizedBox(height: 43,),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25),
-                      child: Column(
-                        children: [
-                          Column(
-                              children: const [
-                                BaseTextInput(placeholder: "Login", prefixImage: 'assets/images/icons/profile.svg', prefixCorrectiveOffset: Offset(4, 0),),
-                                SizedBox(height: 20,),
-                                BaseTextInput(placeholder: "Email", prefixImage: 'assets/images/icons/message.svg', prefixCorrectiveOffset:  Offset(0, -2),),
-                                SizedBox(height: 20,),
-                                BaseTextInput(placeholder: "Password", prefixImage: 'assets/images/icons/lock.svg', prefixCorrectiveOffset:  Offset(0, -4),),
-                              ]
-                          ),
-                          const SizedBox(height: 20,),
+      init: () {
 
-                          const RadioButton(text: 'Keep Me Signed In'),
-                          const SizedBox(height: 12),
-                          const RadioButton(text: 'Email Me About Special Pricing'),
-                        ],
-                      )
-                  ),
+      },
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            TopScreenContent(freeSpace: topFreeSpace),
+            Column(
+              children: [
+                Text('Login To Your Account', style: Theme.of(context).textTheme.headline4),
+                const SizedBox(height: 43,),
+                Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Column(
+                      children: [
+                        Column(
+                            children: const [
+                              BaseTextInput(placeholder: "Login", prefixImage: 'assets/images/icons/profile.svg', prefixCorrectiveOffset: Offset(4, 0),),
+                              SizedBox(height: 20,),
+                              BaseTextInput(placeholder: "Email", prefixImage: 'assets/images/icons/message.svg', prefixCorrectiveOffset:  Offset(0, -2),),
+                              SizedBox(height: 20,),
+                              BaseTextInput(placeholder: "Password", prefixImage: 'assets/images/icons/lock.svg', prefixCorrectiveOffset:  Offset(0, -4),),
+                            ]
+                        ),
+                        const SizedBox(height: 20,),
 
-                  const SizedBox(height: 43,),
+                        RadioButton(text: 'Keep Me Signed In',
+                          onPressed: () {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Нет макета для отжатой кнопки')));
+                          },
+                        ),
+                        const SizedBox(height: 12),
+                        RadioButton(text: 'Email Me About Special Pricing',
+                          onPressed: () {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Нет макета для отжатой кнопки')));
+                          },
+                        ),
+                      ],
+                    )
+                ),
 
-                  const PrimaryButton('Create Account'),
-                  const SizedBox(height: 20,),
+                const SizedBox(height: 43,),
 
-                  const PrimaryGradientText('already have an account?', style: TextStyle(
-                      decoration: TextDecoration.underline,
-                  ),),
+                PrimaryButton('Create Account',
+                  onPressed: () {
+                    StateFacade().auth.register();
+                  },
+                ),
+                const SizedBox(height: 20,),
 
-                  const SizedBox(height: 20,),
-                ],
-              ),
+                const PrimaryGradientText('already have an account?', style: TextStyle(
+                    decoration: TextDecoration.underline,
+                ),),
 
-            ],
-          ),
-        )
+                const SizedBox(height: 20,),
+              ],
+            ),
+
+          ],
+        ),
+      )
     );
   }
 }
