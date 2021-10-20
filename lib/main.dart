@@ -64,11 +64,13 @@ class MyApp extends StatelessWidget {
       // initialRoute: Routes.restaurantDetail,
       // initialRoute: Routes.foodDetail,
       // initialRoute: Routes.orderDetail,
+      // initialRoute: Routes.onboarding,
       routes: {
         Routes.main: (_) => const MainPage(),
         Routes.splashScreen: (_) => const SplashScreenPage(),
         // Routes.onboarding: (_) => const OnboardingFindFoodPage(),
         // Routes.onboarding: (_) => const OnboardingDeliveryPage(),
+        // Routes.onboarding: (_) => OnboardingPage(),
         Routes.login: (_) => const LoginPage(),
         Routes.registration: (_) => const RegistrationPage(),
         Routes.readyProfileStatus: (_) => const ReadyProfileStatusPage(),

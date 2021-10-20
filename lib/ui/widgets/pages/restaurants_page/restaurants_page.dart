@@ -11,27 +11,31 @@ class RestaurantsPage extends StatelessWidget {
     return PrimaryContentScaffold(
         showBottomAppBar: true,
         body: Section(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           title: 'Popular Restaurant',
-          child: Wrap(
-            spacing: 20,
-            runSpacing: 20,
-            children: [
-              RestaurantCard(
-                  image: 'https://icrab.pro/themes/icrab/assets/images/food_ninja/restaurants/vegan_resto.png',
-                  title: 'Vegan Resto',
-                  subtitle: '12 Mins'
-              ),
-              RestaurantCard(
-                  image: 'https://icrab.pro/themes/icrab/assets/images/food_ninja/restaurants/healthy_food.png',
-                  title: 'Healthy Food',
-                  subtitle: '8 Mins'
-              ),
-              RestaurantCard(
-                  image: 'https://icrab.pro/themes/icrab/assets/images/food_ninja/restaurants/good_food.png',
-                  title: 'Good Food',
-                  subtitle: '12 Mins'
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Wrap(
+              spacing: 20,
+              runSpacing: 20,
+              children: [
+                RestaurantCard(
+                    image: 'https://icrab.pro/themes/icrab/assets/images/food_ninja/restaurants/vegan_resto.png',
+                    title: 'Vegan Resto',
+                    subtitle: '12 Mins'
+                ),
+                RestaurantCard(
+                    image: 'https://icrab.pro/themes/icrab/assets/images/food_ninja/restaurants/healthy_food.png',
+                    title: 'Healthy Food',
+                    subtitle: '8 Mins'
+                ),
+                RestaurantCard(
+                    image: 'https://icrab.pro/themes/icrab/assets/images/food_ninja/restaurants/good_food.png',
+                    title: 'Good Food',
+                    subtitle: '12 Mins'
+                ),
+              ],
+            ),
           ),
         )
     );
