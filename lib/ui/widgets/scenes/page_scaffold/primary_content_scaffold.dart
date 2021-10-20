@@ -10,7 +10,7 @@ class PrimaryContentScaffold extends StatelessWidget {
   final Widget body;
   final PreferredSizeWidget? appBar;
   final Widget? floatingActionButton;
-  final Function? init;
+  final VoidCallback? init;
   final bool? resizeToAvoidBottomInset;
   final bool showBottomAppBar;
   final List<Widget>? positionedChildren;

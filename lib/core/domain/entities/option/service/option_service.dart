@@ -6,7 +6,7 @@ class OptionService {
   const OptionService();
 
   Future<BaseCollection<Option>> getAllOptions() async {
-    return  const OptionRepository().read();
+    return const OptionRepository().read();
   }
 
   Future<bool> updateOption(covariant Option option) async {

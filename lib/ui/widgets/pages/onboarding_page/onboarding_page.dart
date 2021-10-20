@@ -1,52 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:food_ninja/ui/widgets/base/button/primary_button.dart';
+import 'package:food_ninja/state/management/mobx/modules/onboarding/onboarding.dart';
+import 'package:food_ninja/state/management/store_facade.dart';
+import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_delivery_page.dart';
+import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_find_food_page.dart';
 import 'package:food_ninja/ui/widgets/scenes/page_scaffold/page_scaffold.dart';
 
 class OnboardingPage extends StatelessWidget {
-  final String image;
-  final String title;
-  final String description;
+  final PageController pageController = PageController();
 
-  const OnboardingPage({
-    Key? key,
-    required this.image,
-    required this.title,
-    required this.description,
-  }) : super(key: key);
+  OnboardingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-        body: Column(
-          children: [
-            Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(image),
-                      fit: BoxFit.fitWidth
-                    )
-                  ),
-                  alignment: Alignment.topCenter,
-                )
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 65),
-              child: Column(
-                children: [
-                  Text(title, style: Theme.of(context).textTheme.headline3, textAlign: TextAlign.center,),
-                  const SizedBox(height: 20,),
-
-                  Text(description, textAlign: TextAlign.center,),
-                  const SizedBox(height: 45,),
-
-                  PrimaryButton('Next', onPressed: null,),
-                  const SizedBox(height: 60,)
-                ]
-              ),
-            )
-          ],
-        )
+      init: (){
+        StoreFacade().onboarding = Onboarding();
+      },
+      dispose: () {
+        StoreFacade().onboarding = null;
+      },
+      body: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: pageController,
+        children: [
+          OnboardingFindFoodPage(action: (){
+            pageController.nextPage(duration: const Duration(milliseconds: 150), curve: Curves.easeInOut);
+          },),
+          OnboardingDeliveryPage(action: (){
+            StoreFacade().onboarding?.closeOnboarding();
+          },),
+        ],
+      ),
     );
   }
 }

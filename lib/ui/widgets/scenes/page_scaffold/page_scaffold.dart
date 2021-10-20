@@ -5,7 +5,8 @@ class PageScaffold extends StatefulWidget {
   final Widget body;
   final PreferredSizeWidget? appBar;
   final Widget? floatingActionButton;
-  final Function? init;
+  final VoidCallback? init;
+  final VoidCallback? dispose;
   final bool? resizeToAvoidBottomInset;
   final bool showBottomAppBar;
   final Widget? bottomNavigationBar;
@@ -15,6 +16,7 @@ class PageScaffold extends StatefulWidget {
     this.appBar,
     this.floatingActionButton,
     this.init,
+    this.dispose,
     this.resizeToAvoidBottomInset,
     this.showBottomAppBar = false,
     this.bottomNavigationBar,
@@ -30,10 +32,9 @@ class _PageScaffoldState extends State<PageScaffold> {
   @override
   void initState() {
     super.initState();
-
-    if(widget.init != null && widget.init is Function) {
-      // ignore: avoid_dynamic_calls
-      widget.init!();
+    final func = widget.init;
+    if(func != null) {
+      func();
     }
   }
 
@@ -46,5 +47,14 @@ class _PageScaffoldState extends State<PageScaffold> {
       resizeToAvoidBottomInset: widget.resizeToAvoidBottomInset,
       bottomNavigationBar: widget.bottomNavigationBar ?? (widget.showBottomAppBar ? BaseBottomNavigationBar() : null),
     );
+  }
+
+  @override
+  void dispose() {
+    final func = widget.dispose;
+    if(func != null) {
+      func();
+    }
+    super.dispose();
   }
 }

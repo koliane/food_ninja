@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_ninja/core/application/bootstrap/bootstrap.dart';
+import 'package:food_ninja/core/domain/entities/option/service/options.dart';
 import 'package:food_ninja/state/bootstrap/state_bootstrap.dart';
 import 'package:food_ninja/state/routes/routes.dart';
 import 'package:food_ninja/ui/bootstrap/ui_bootstrap.dart';
@@ -17,11 +18,12 @@ import 'package:food_ninja/ui/widgets/pages/main_page/main_page.dart';
 import 'package:food_ninja/ui/widgets/pages/menu_page/menu_page.dart';
 import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_delivery_page.dart';
 import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_find_food_page.dart';
+import 'package:food_ninja/ui/widgets/pages/onboarding_page/onboarding_page.dart';
 import 'package:food_ninja/ui/widgets/pages/order_detail_page/order_detail_page.dart';
 import 'package:food_ninja/ui/widgets/pages/restaurant_detail_page/restaurant_detail_page.dart';
 import 'package:food_ninja/ui/widgets/pages/restaurants_page/restaurants_page.dart';
 import 'package:food_ninja/ui/widgets/pages/splash_screen_page/splash_screen_page.dart';
-import 'package:food_ninja/ui/widgets/service/app/app_global_keys.dart';
+import 'package:food_ninja/ui/service/app/app_global_keys.dart';
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 
@@ -65,7 +67,7 @@ class MyApp extends StatelessWidget {
       routes: {
         Routes.main: (_) => const MainPage(),
         Routes.splashScreen: (_) => const SplashScreenPage(),
-        Routes.onboarding: (_) => const OnboardingFindFoodPage(),
+        // Routes.onboarding: (_) => const OnboardingFindFoodPage(),
         // Routes.onboarding: (_) => const OnboardingDeliveryPage(),
         Routes.login: (_) => const LoginPage(),
         Routes.registration: (_) => const RegistrationPage(),
@@ -83,7 +85,6 @@ class MyApp extends StatelessWidget {
       },
 
       home: FutureBuilder(
-        // future: Init.instance.initialize(),
         future: Future.wait([
           Bootstrap.appInit(),
           StateBootstrap.appInit(),
@@ -94,7 +95,11 @@ class MyApp extends StatelessWidget {
             return const SplashScreenPage();
           }
 
-          return const LoginPage();
+          if(Options().needToShowOnboarding) {
+            return OnboardingPage();
+          }
+
+          return RegistrationPage();
         },
       )
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:food_ninja/state/management/store_facade.dart';
 import 'package:food_ninja/ui/widgets/base/button/primary_button.dart';
+import 'package:food_ninja/ui/widgets/base/button/primary_text_button.dart';
 import 'package:food_ninja/ui/widgets/base/input/base_text_input.dart';
 import 'package:food_ninja/ui/widgets/base/text/primary_gradient_text.dart';
 import 'package:food_ninja/ui/widgets/pages/auth/components/oauth_card/oauth_card.dart';
@@ -75,6 +77,21 @@ class LoginPage extends StatelessWidget {
                   const PrimaryGradientText('Forgot Your Password?', style: TextStyle(
                     decoration: TextDecoration.underline,
                   ),),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10),
+                    child: PrimaryTextButton(
+                      text: 'Register',
+                      onPressed: (){
+                        StoreFacade().routeStore.goToRootRegistrationPage();
+                      },
+                      textStyle: const TextStyle(
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                    // child: const PrimaryGradientText('Register', style: TextStyle(
+                    //   decoration: TextDecoration.underline,
+                    // ),),
+                  ),
 
                   const SizedBox(height: 40,),
 

@@ -6,13 +6,16 @@ import '../../skeleton/collection/base_collection.dart';
 import 'package:food_ninja/core/infrastructure/utils/scalar/scalar.dart';
 
 class Options {
-  static Options instance = Options._internal();
+  static Options _instance = Options._internal();
   static final Map<String, Option> _optionsMap = {};
   late bool _needToShowOnboarding;
 
 
   Options._internal();
 
+  factory Options() {
+    return _instance;
+  }
 
   Future<void> init() async {
     final BaseCollection<Option> collection = await const OptionService().getAllOptions();

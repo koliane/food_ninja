@@ -1,52 +1,69 @@
+import 'package:food_ninja/state/routes/routes.dart';
+import 'package:mobx/mobx.dart';
+
 import 'route_action_enum.dart';
 import 'route_action.dart';
 
-mixin BaseRouteActions {
-  RouteAction pushNamed(String routeName, [Object? payload]) {
-    return RouteAction(
+part 'base_route_actions.g.dart';
+
+class BaseRouteActions = _BaseRouteActions with _$BaseRouteActions;
+
+abstract class _BaseRouteActions with Store {
+  @observable
+  RouteAction currentRoute = RouteAction(name: Routes.main, action: RouteActionEnum.init);
+
+  @action
+  void pushNamed(String routeName, [Object? payload]) {
+    currentRoute = RouteAction(
       name: routeName,
       action: RouteActionEnum.pushNamed,
       payload: payload
     );
   }
 
-  RouteAction pop() {
-    return RouteAction(
+  @action
+  void pop() {
+    currentRoute = RouteAction(
       action: RouteActionEnum.pop
     );
   }
 
-  RouteAction maybePop() {
-    return RouteAction(
+  @action
+  void maybePop() {
+    currentRoute = RouteAction(
       action: RouteActionEnum.maybePop
     );
   }
 
-  RouteAction popUntil([String? untilName]) {
-    return RouteAction(
+  @action
+  void popUntil([String? untilName]) {
+    currentRoute = RouteAction(
       action: RouteActionEnum.popUntil,
       untilName: untilName
     );
   }
 
-  RouteAction pushReplacementNamed(String routeName, [Object? payload]) {
-    return RouteAction(
+  @action
+  void pushReplacementNamed(String routeName, [Object? payload]) {
+    currentRoute = RouteAction(
       name: routeName,
       action: RouteActionEnum.pushReplacementNamed,
       payload: payload
     );
   }
 
-  RouteAction popAndPushNamed(String routeName, [Object? payload]) {
-    return RouteAction(
+  @action
+  void popAndPushNamed(String routeName, [Object? payload]) {
+    currentRoute = RouteAction(
       name: routeName,
       action: RouteActionEnum.popAndPushNamed,
       payload: payload
     );
   }
 
-  RouteAction pushNamedAndRemoveUntil(String routeName, [String? untilName, Object? payload]) {
-    return RouteAction(
+  @action
+  void pushNamedAndRemoveUntil(String routeName, [String? untilName, Object? payload]) {
+    currentRoute = RouteAction(
       name: routeName,
       action: RouteActionEnum.pushNamedAndRemoveUntil,
       payload: payload,

@@ -4,13 +4,30 @@ import './di/di_bootstrap.dart';
 import 'sqlite/sqlite_bootstrap.dart';
 
 class Bootstrap {
-  static Future<void> appInit() async {
+  static Future appInit() {
+    //TODO GetIt обновляет зависимости при хотрелоаде/рестарте, поэтому такой костыль. На проде заменить закомментированным кодом
+    dynamic future  = Future.value(5);
+    try {
+      DiBootstrap.eventDispatcherToAppInit();
+      DiBootstrap.providersToAppInit();
 
-    SQLiteBootstrap.connect().then((value){
-      Options.instance.init();
-    });
+      future = Future.wait([
+        SQLiteBootstrap.connect().then((value){
+          Options().init();
+        }),
+      ]);
+    }catch(e){}
 
-    DiBootstrap.eventDispatcherToAppInit();
-    DiBootstrap.providersToAppInit();
+    return future;
+
+
+    // DiBootstrap.eventDispatcherToAppInit();
+    // DiBootstrap.providersToAppInit();
+    //
+    // return Future.wait([
+    //   SQLiteBootstrap.connect().then((value){
+    //     Options().init();
+    //   }),
+    // ]);
   }
 }
