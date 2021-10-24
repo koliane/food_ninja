@@ -1,9 +1,8 @@
-import 'package:food_ninja/core/application/use_cases/auth/auth_case.dart';
-import 'package:food_ninja/core/domain/entities/auth/dto/registration_credentials_dto.dart';
-import 'package:food_ninja/core/domain/entities/auth/model/already_registered_status.dart';
-import 'package:food_ninja/core/domain/entities/auth/model/base_auth_status.dart';
-import 'package:food_ninja/core/domain/entities/auth/model/validation_failure_status.dart';
-import 'package:food_ninja/core/domain/entities/auth/model/verification_required_status.dart';
+import 'package:food_ninja/state/management/mobx/modules/auth/contexts/access_recovery_context.dart';
+
+import 'contexts/authorization_context.dart';
+
+import 'contexts/registration_context.dart';
 import 'package:mobx/mobx.dart';
 
 part 'auth_state.g.dart';
@@ -11,28 +10,52 @@ part 'auth_state.g.dart';
 class AuthState = _AuthState with _$AuthState;
 
 abstract class _AuthState with Store {
+  RegistrationContext? _registrationContext;
+  AuthorizationContext? _authorizationContext;
+  AccessRecoveryContext? _accessRecoveryContext;
 
-  @action
   Future register() async {
-    print('button is pushed');
-    //TODO
+    registrationContext.register();
+  }
 
-    BaseAuthStatus status = await AuthCase().register(RegistrationCredentialsDto(email: 'asdf@mail.ru', password: 'password'));
-    switch(status.runtimeType) {
-      case ValidationFailureStatus:
-        // state.registrationValidationFailure.value = true;
-        break;
+  Future verifyAndRegister() async {
+    registrationContext.verifyAndRegister();
+  }
 
-      case AlreadyRegisteredStatus:
-        // state.registrationUserAlreadyExists.value = true;
-        break;
+  Future authorize() async {
+    authorizationContext.authorize();
+  }
 
-      case VerificationRequiredStatus:
-        // state.registrationValidationFailure.value = false;
-        // state.registrationUserAlreadyExists.value = false;
-        //
-        // StoreFacade().routeStore.actions.pushToRegistrationVerifyPage();
-        break;
-    }
+  Future sendAccessRecoveryVerificationCode() async {
+    accessRecoveryContext.sendAccessRecoveryVerificationCode();
+  }
+
+  Future createNewPassword() async {
+    accessRecoveryContext.createNewPassword();
+  }
+
+
+  RegistrationContext get registrationContext {
+    return _registrationContext ??= RegistrationContext();
+  }
+
+  AuthorizationContext get authorizationContext {
+    return _authorizationContext ??= AuthorizationContext();
+  }
+
+  AccessRecoveryContext get accessRecoveryContext {
+    return _accessRecoveryContext ??= AccessRecoveryContext();
+  }
+
+  void resetRegistrationContext() {
+    _registrationContext = null;
+  }
+
+  void resetAuthorizationContext() {
+    _authorizationContext = null;
+  }
+
+  void resetAccessRecoveryContext() {
+    _accessRecoveryContext = null;
   }
 }

@@ -8,12 +8,14 @@ class StepPage extends StatelessWidget {
   final String buttonText;
   final String description;
   final Widget child;
+  final VoidCallback onPressed;
 
   const StepPage({
     required this.title,
     required this.buttonText,
     required this.description,
     required this.child,
+    required this.onPressed,
     Key? key,
   }) : super(key: key);
 
@@ -46,7 +48,6 @@ class StepPage extends StatelessWidget {
             ),
           ),
           Container(
-            // color: Colors.red,
             padding: EdgeInsets.only(
               top: topSafeAreaHeight == 0 ? 83 : 60 + topSafeAreaHeight,
               bottom: 117,
@@ -73,8 +74,7 @@ class StepPage extends StatelessWidget {
           ),
           Positioned(
               top: 660,
-              // bottom: 60,
-              child: PrimaryButton(buttonText)
+              child: PrimaryButton(buttonText, onPressed: onPressed,)
           )
         ],
       ),

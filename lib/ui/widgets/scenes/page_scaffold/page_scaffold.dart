@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_ninja/ui/service/app/app_global_keys.dart';
 import 'package:food_ninja/ui/widgets/scenes/base_bottom_navigation_bar/base_bottom_navigation_bar.dart';
 
 class PageScaffold extends StatefulWidget {
@@ -28,6 +29,7 @@ class PageScaffold extends StatefulWidget {
 }
 
 class _PageScaffoldState extends State<PageScaffold> {
+  GlobalKey<ScaffoldState>? scaffoldKey;
 
   @override
   void initState() {
@@ -36,11 +38,13 @@ class _PageScaffoldState extends State<PageScaffold> {
     if(func != null) {
       func();
     }
+    scaffoldKey = AppGlobalKeys.initCurrentPageKey();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       body: widget.body,
       appBar: widget.appBar,
       floatingActionButton: widget.floatingActionButton,

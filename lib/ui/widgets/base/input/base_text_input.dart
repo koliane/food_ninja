@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:food_ninja/core/application/settings/settings.dart';
 import 'package:food_ninja/ui/styles/default/color.dart';
 import 'package:food_ninja/ui/styles/default/shadow.dart';
 
@@ -23,6 +24,8 @@ class BaseTextInput extends StatelessWidget {
   final TextStyle? textStyle;
   final bool obscureText;
   final Color? fillColor;
+  final String? initialValue;
+  final ValueChanged<String>? onChanged;
 
 
   const BaseTextInput({
@@ -39,6 +42,8 @@ class BaseTextInput extends StatelessWidget {
     this.placeholder,
     this.placeholderTextStyle,
     this.fillColor,
+    this.initialValue,
+    this.onChanged,
     Key? key,
   }) : super(key: key);
 
@@ -75,7 +80,9 @@ class BaseTextInput extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          TextField(
+          TextFormField(
+            initialValue: initialValue,
+            onChanged: onChanged,
             style: textStyle ?? Theme.of(context).textTheme.bodyText2?.copyWith(
               fontSize: 14,
               letterSpacing: 0.5
@@ -113,7 +120,7 @@ class BaseTextInput extends StatelessWidget {
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
                   color: Color(placeholderColor2),
-                  package: 'food_ninja'
+                  package: projectName
                 )),
               )
             : const SizedBox.shrink()

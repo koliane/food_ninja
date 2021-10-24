@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:food_ninja/state/management/mobx/modules/auth/models/authorization_credentials.dart';
 import 'package:food_ninja/state/management/state_facade.dart';
+import 'package:food_ninja/state/routes/routes.dart';
 import 'package:food_ninja/ui/widgets/base/button/primary_button.dart';
 import 'package:food_ninja/ui/widgets/base/button/primary_text_button.dart';
 import 'package:food_ninja/ui/widgets/base/input/base_text_input.dart';
@@ -20,6 +22,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double topFreeSpace = screenHeight - _mainContentHeight;
+    final AuthorizationCredentials credentials = StateFacade().auth.authorizationContext.credentials;
 
     return PageScaffold(
         body: SingleChildScrollView(
@@ -37,10 +40,23 @@ class LoginPage extends StatelessWidget {
                       child: Column(
                         children: [
                           Column(
-                              children: const [
-                                BaseTextInput(placeholder: "Email",),
-                                SizedBox(height: 20,),
-                                BaseTextInput(placeholder: "Password",),
+                              children:  [
+                                BaseTextInput(
+                                  initialValue: credentials.email,
+                                  onChanged: (String value) {
+                                    credentials.email = value;
+                                  },
+                                  placeholder: "Email",
+                                ),
+                                const SizedBox(height: 20,),
+                                BaseTextInput(
+                                  initialValue: credentials.password,
+                                  onChanged: (String value) {
+                                    credentials.password = value;
+                                  },
+                                  obscureText: true,
+                                  placeholder: "Password",
+                                ),
                               ]
                           ),
                           const SizedBox(height: 20,),
@@ -55,7 +71,7 @@ class LoginPage extends StatelessWidget {
                                 child: OauthCard(
                                   image: SvgPicture.asset('assets/images/social_services/facebook.svg'),
                                   text: 'Facebook',
-                                  onPressed: () => print("Facebook"),
+                                  onPressed: () => StateFacade().app.showSnackBar('Еще не сделано'),
                                 ),
                               ),
                               const SizedBox(width: 20,),
@@ -63,7 +79,7 @@ class LoginPage extends StatelessWidget {
                                 child: OauthCard(
                                     image: SvgPicture.asset('assets/images/social_services/google.svg'),
                                     text: 'Google',
-                                    onPressed: () => print("Google")
+                                    onPressed: () => StateFacade().app.showSnackBar('Еще не сделано'),
                                 ),
                               )
                             ],
@@ -74,15 +90,20 @@ class LoginPage extends StatelessWidget {
 
                   const SizedBox(height: 20,),
 
-                  const PrimaryGradientText('Forgot Your Password?', style: TextStyle(
-                    decoration: TextDecoration.underline,
-                  ),),
+                  GestureDetector(
+                    onTap: () {
+                      StateFacade().route.pushToForgotPasswordPage();
+                    },
+                    child: const PrimaryGradientText('Forgot Your Password?', style: TextStyle(
+                      decoration: TextDecoration.underline,
+                    ),),
+                  ),
                   Padding(
-                    padding: EdgeInsets.only(top: 10),
+                    padding: const EdgeInsets.only(top: 10),
                     child: PrimaryTextButton(
                       text: 'Register',
-                      onPressed: (){
-                        StateFacade().route.goToRootRegistrationPage();
+                      onPressed: () async {
+                        Navigator.of(context).pushNamed(Routes.registration);
                       },
                       textStyle: const TextStyle(
                         decoration: TextDecoration.underline,
@@ -92,7 +113,11 @@ class LoginPage extends StatelessWidget {
 
                   const SizedBox(height: 40,),
 
-                  const PrimaryButton('Login'),
+                  PrimaryButton('Login',
+                    onPressed: (){
+                      StateFacade().auth.authorize();
+                    },
+                  ),
                   const SizedBox(height: 60,),
                 ],
               ),

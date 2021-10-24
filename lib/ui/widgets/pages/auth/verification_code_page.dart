@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:food_ninja/state/management/mobx/modules/route/payloads/auth_verification_code_payload.dart';
 import 'package:food_ninja/ui/styles/default/shadow.dart';
 import 'package:food_ninja/ui/widgets/scenes/page_scaffold/page_scaffold.dart';
 import 'package:food_ninja/ui/widgets/scenes/step_page/step_page.dart';
@@ -12,11 +13,14 @@ class VerificationCodePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final routePayload = ModalRoute.of(context)!.settings.arguments as AuthVerificationCodePayload;
+
     return PageScaffold(
       resizeToAvoidBottomInset: false,
       body: StepPage(
+        onPressed: routePayload.action,
         title: 'Enter 4-digit\nVerification code',
-        description: 'Code send to +6282045**** . This code will\nexpired in 01:30',
+        description: 'Code send to ${routePayload.email}',
         buttonText: 'Next',
         child: Column(
           children: [
@@ -28,7 +32,8 @@ class VerificationCodePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(22),
                 boxShadow: primaryShadow
               ),
-              child: TextField(
+              child: TextFormField(
+                onChanged: routePayload.onChanged,
                 autofocus: true,
                 showCursor: false,
                 style: const TextStyle(

@@ -24,26 +24,31 @@ import 'package:food_ninja/ui/widgets/pages/restaurant_detail_page/restaurant_de
 import 'package:food_ninja/ui/widgets/pages/restaurants_page/restaurants_page.dart';
 import 'package:food_ninja/ui/widgets/pages/splash_screen_page/splash_screen_page.dart';
 import 'package:food_ninja/ui/service/app/app_global_keys.dart';
+import 'package:food_ninja/ui/widgets/pages/test/test_page.dart';
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  // FlutterError.onError = (FlutterErrorDetails details) {
+  //   FlutterError.presentError(details);
+  //   if (kReleaseMode)
+  //     exit(1);
+  // };
 
-  // Bootstrap.appInit();
-  // StateBootstrap.appInit();
-  // UiBootstrap.appInit();
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  bool isInitialized = false;
 
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(final BuildContext context) {
     return MaterialApp(
+      // key: ,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: primaryThemeData,
@@ -76,7 +81,7 @@ class MyApp extends StatelessWidget {
         Routes.readyProfileStatus: (_) => const ReadyProfileStatusPage(),
         Routes.verificationCode: (_) => const VerificationCodePage(),
         Routes.forgotPassword: (_) => const ForgotPasswordPage(),
-        Routes.newPassword: (_) => const NewPasswordPage(),
+        Routes.newPassword: (_) => NewPasswordPage(),
         Routes.passwordResetSuccessfulStatus: (_) => const PasswordResetSuccessfulStatusPage(),
         Routes.restaurants: (_) => const RestaurantsPage(),
         Routes.menu: (_) => const MenuPage(),
@@ -87,21 +92,26 @@ class MyApp extends StatelessWidget {
       },
 
       home: FutureBuilder(
-        future: Future.wait([
-          Bootstrap.appInit(),
-          StateBootstrap.appInit(),
-          UiBootstrap.appInit(),
-        ]),
+        future: isInitialized
+          ? Future.value()
+          : Future.wait([
+            Bootstrap.appInit(),
+            StateBootstrap.appInit(),
+            UiBootstrap.appInit(),
+          ]),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const SplashScreenPage();
           }
 
+          isInitialized = true;
+
           if(Options().needToShowOnboarding) {
             return OnboardingPage();
           }
 
-          return RegistrationPage();
+          return const LoginPage();
+          // return TestPage();
         },
       )
     );
