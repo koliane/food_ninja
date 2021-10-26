@@ -1,3 +1,7 @@
+import 'package:food_ninja/core/domain/entities/option/request/read_option_request.dart';
+import 'package:food_ninja/core/domain/entities/option/request/update_option_request.dart';
+import 'package:food_ninja/core/domain/entities/option/response/all_options_response.dart';
+
 import '../model/bool_option.dart';
 import '../model/option.dart';
 import '../port/provider/option_crud_provider_port.dart';
@@ -6,10 +10,6 @@ import '../../skeleton/collection/base_collection.dart';
 import '../../skeleton/model/base_model.dart';
 import '../../skeleton/repository/base_repository.dart';
 import '../../skeleton/repository/crud_repository.dart';
-import 'package:food_ninja/core/domain/entities/skeleton/response/dto/code_value_dto.dart';
-import 'package:food_ninja/core/domain/entities/skeleton/request/base_request.dart';
-import 'package:food_ninja/core/domain/entities/skeleton/request/code_value_request.dart';
-import 'package:food_ninja/core/domain/entities/skeleton/response/list_response.dart';
 import 'package:food_ninja/core/infrastructure/di/provider_di.dart';
 
 class OptionRepository extends BaseRepository implements CrudRepository<Option> {
@@ -30,22 +30,31 @@ class OptionRepository extends BaseRepository implements CrudRepository<Option> 
   @override
   Future<BaseCollection<Option>> read() async {
     final OptionCrudProviderPort provider = ProviderDi.getOptionReadProvider();
-    final ListResponse<CodeValueDto> response = await provider.send(BaseRequest());
+    final AllOptionsResponse response = await provider.send(ReadOptionRequest());
 
     final BaseCollection<Option> collection = BaseCollection<Option>();
-    response.list.forEach((element) {
-      final String code = element.code;
-      Option option;
-      if(OptionsProps.isBool(code)) {
-        option = BoolOption(code, element.value == "1");
-      } else {
-        option = Option(element.code, element.value);
-      }
+    response.ordinary.forEach((element) {
+      final Option option = _createOption(element.code, element.value, false);
+      collection.add(option);
+    });
 
+    response.secure.forEach((element) {
+      final Option option = _createOption(element.code, element.value, true);
       collection.add(option);
     });
 
     return collection;
+  }
+
+  Option _createOption(String code, String value, bool isSecure) {
+    Option option;
+    if(OptionsProps.isBool(code)) {
+      option = BoolOption(code, value == "1", isSecure: isSecure);
+    } else {
+      option = Option<String>(code, value, isSecure: isSecure);
+    }
+
+    return option;
   }
 
   @override
@@ -58,7 +67,11 @@ class OptionRepository extends BaseRepository implements CrudRepository<Option> 
       value = model.value;
     }
 
-    final CodeValueRequest request = CodeValueRequest(model.code, value);
+    final UpdateOptionRequest request = UpdateOptionRequest(
+      code: model.code,
+      value: value,
+      isSecure: model.isSecure,
+    );
 
     return await provider.send(request);
   }

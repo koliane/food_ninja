@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_ninja/core/application/bootstrap/bootstrap.dart';
+import 'package:food_ninja/core/domain/entities/auth/service/auth_service.dart';
 import 'package:food_ninja/core/domain/entities/option/service/options.dart';
 import 'package:food_ninja/state/bootstrap/state_bootstrap.dart';
 import 'package:food_ninja/state/routes/routes.dart';
@@ -40,6 +41,30 @@ void main() {
   runApp(MyApp());
 }
 
+//TODO
+// class CustomObserver extends NavigatorObserver {
+//   @override
+//   void didPush(Route route, Route? previousRoute) {
+//     // TODO: implement didPush
+//     print(route.settings.name);
+//     super.didPush(route, previousRoute);
+//   }
+//
+//   @override
+//   void didPop(Route route, Route? previousRoute) {
+//
+//     final context = route.navigator!.context;
+//     print('uiiii');
+//     print(route.settings.name);
+//     print(previousRoute!.settings.name);
+//     // ScaffoldMessenger.of(route.navigator!.context).showSnackBar(SnackBar(content: Text('hello')));
+//     // TODO: implement didPop
+//     super.didPop(route, previousRoute);
+//   }
+//
+//
+// }
+
 class MyApp extends StatelessWidget {
   bool isInitialized = false;
 
@@ -47,8 +72,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) {
+    bool isAuthorized = false;
+
     return MaterialApp(
-      // key: ,
+      // navigatorObservers: [
+      //   CustomObserver()
+      // ],
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: primaryThemeData,
@@ -98,6 +127,9 @@ class MyApp extends StatelessWidget {
             Bootstrap.appInit(),
             StateBootstrap.appInit(),
             UiBootstrap.appInit(),
+            (() async {
+              isAuthorized = await const AuthService().isAuthorized();
+            })()
           ]),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -110,7 +142,10 @@ class MyApp extends StatelessWidget {
             return OnboardingPage();
           }
 
-          return const LoginPage();
+          return isAuthorized
+              ? const LoginPage()
+              : const MainPage()
+          ;
           // return TestPage();
         },
       )

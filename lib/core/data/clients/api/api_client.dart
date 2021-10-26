@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:food_ninja/core/data/clients/api/api_routes.dart';
 import 'package:food_ninja/core/data/clients/api/exceptions/api_exception.dart';
 import 'package:food_ninja/core/data/clients/skeleton/base_client.dart';
+import 'package:food_ninja/core/domain/entities/option/service/options.dart' as domain_options;
 import 'api.dart';
 
 class ApiClient extends BaseClient {
@@ -15,29 +16,18 @@ class ApiClient extends BaseClient {
     );
 
     final Dio dio = Dio(baseOptions);
-    //TODO Доделать
+    //TODO Доделать исключения. Добавить источник исключения. Разделить на сообщения для пользователя и для системы
     dio.interceptors.add(InterceptorsWrapper(
         onRequest:(options, handler){
-          options.headers[Api.userHashField] = 'asd';
-          // Do something before request is sent
-          return handler.next(options); //continue
-          // If you want to resolve the request with some custom data，
-          // you can resolve a `Response` object eg: `handler.resolve(response)`.
-          // If you want to reject the request with a error message,
-          // you can reject a `DioError` object eg: `handler.reject(dioError)`
+          options.headers[Api.userHashField] = domain_options.Options().apiAuthToken;
+
+          return handler.next(options);
         },
         onResponse:(response,handler) {
-          // Do something with response data
-          return handler.next(response); // continue
-          // If you want to reject the request with a error message,
-          // you can reject a `DioError` object eg: `handler.reject(dioError)`
+          return handler.next(response);
         },
         onError: (DioError e, handler) {
           throw ApiException('Не удалось установить соединение');
-          // Do something with response error
-          // return  handler.next(e);//continue
-          // If you want to resolve the request with some custom data，
-          // you can resolve a `Response` object eg: `handler.resolve(response)`.
         }
     ));
 
@@ -56,21 +46,14 @@ class ApiClient extends BaseClient {
       'email': email,
       'password': password,
     };
+
     if(emailVerifyCode != null) {
       body['checkCode'] = emailVerifyCode;
     }
 
-    Response? response;
-    try {
-      response = await _dio.post(ApiRoutes.register,
-          data: body
-      );
-    } on DioError catch(e) {
-      print(e);
-      throw ApiException('Не удалось установить соединение');
-    }
-
-    return response;
+    return _dio.post(ApiRoutes.register,
+        data: body
+    );
   }
 
   Future authorize({required String email, required String password}) async {
@@ -79,22 +62,9 @@ class ApiClient extends BaseClient {
       'password': password,
     };
 
-    Response? response;
-    try {
-      response = await _dio.post(ApiRoutes.authorize,
-        data: body,
-        // options: Options (
-        //   headers: {"appusertoken": "lalala"},
-        // )
-      );
-    } on DioError catch(e) {
-      print(e.stackTrace);
-      rethrow;
-      // throw ApiException('Не удалось установить соединение');
-    }
-
-    print(response.toString());
-    return response;
+    return _dio.post(ApiRoutes.authorize,
+      data: body,
+    );
   }
 
   Future sendAccessRecoveryEmailCode({required String email}) async {
@@ -130,5 +100,13 @@ class ApiClient extends BaseClient {
     return _dio.post(ApiRoutes.new_password,
       data: body,
     );
+  }
+
+  Future isAuthorized() async {
+    return _dio.post(ApiRoutes.is_authorized);
+  }
+
+  Future restaurants() async {
+    return _dio.get(ApiRoutes.restaurants);
   }
 }

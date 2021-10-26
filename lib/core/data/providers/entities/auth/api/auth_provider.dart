@@ -1,6 +1,9 @@
+import 'package:food_ninja/core/data/clients/api/exceptions/api_exception.dart';
 import 'package:food_ninja/core/domain/entities/auth/request/create_new_password_request.dart';
+import 'package:food_ninja/core/domain/entities/auth/request/is_authorized_request.dart';
 import 'package:food_ninja/core/domain/entities/auth/response/create_new_password_response.dart';
 import 'package:food_ninja/core/domain/entities/auth/request/verify_reset_code_request.dart';
+import 'package:food_ninja/core/domain/entities/auth/response/is_authorized_response.dart';
 import 'package:food_ninja/core/domain/entities/auth/response/verify_reset_code_response.dart';
 import 'package:food_ninja/core/domain/entities/auth/request/send_access_recovery_verification_code_request.dart';
 import 'package:food_ninja/core/domain/entities/auth/response/send_access_recovery_verification_code_response.dart';
@@ -25,6 +28,7 @@ enum AuthProviderActionsEnum {
   sendAccessRecoveryVerificationCode,
   verifyResetCode,
   createNewPassword,
+  isAuthorized,
 }
 
 class AuthProvider extends BaseProvider implements AuthProviderPort {
@@ -35,6 +39,7 @@ class AuthProvider extends BaseProvider implements AuthProviderPort {
   const AuthProvider.authorize(): _operation = AuthProviderActionsEnum.authorize;
   const AuthProvider.verifyAndRegister(): _operation = AuthProviderActionsEnum.verifyAndRegister;
   const AuthProvider.register(): _operation = AuthProviderActionsEnum.register;
+  const AuthProvider.isAuthorized(): _operation = AuthProviderActionsEnum.isAuthorized;
 
   Future<RegisterResponse> register(RegisterRequest request) async {
     final dio.Response httpResponse = await ApiClient().register(
@@ -79,9 +84,16 @@ class AuthProvider extends BaseProvider implements AuthProviderPort {
 
     final Map<String, dynamic> responseMap = httpResponse.data;
     final String statusCode = responseMap['status_code'] ?? '';
+    final String token = responseMap['token'] ?? '';
+    final bool isSuccessfullyAuthorized = statusCode == 'SUCCESS_AUTHORIZED';
+
+    if(isSuccessfullyAuthorized && token.isEmpty) {
+      throw ApiException('С сервера не пришел токен авторизации');
+    }
 
     return AuthorizeResponse(
-      successfullyAuthorized: statusCode == 'SUCCESS_AUTHORIZED',
+      token: token,
+      successfullyAuthorized: isSuccessfullyAuthorized,
       authenticationFailure: statusCode == 'AUTHENTICATION_FAILURE',
     );
   }
@@ -133,6 +145,15 @@ class AuthProvider extends BaseProvider implements AuthProviderPort {
     );
   }
 
+  Future<IsAuthorizedResponse> isAuthorized(AuthBaseRequest request) async {
+    final dio.Response httpResponse = await ApiClient().isAuthorized();
+    final bool isAuthorized = httpResponse.data['is_auth'] == true;
+
+    print( httpResponse.data);
+
+    return IsAuthorizedResponse(isAuthorized);
+  }
+
 
   Future<AuthBaseResponse> send(AuthBaseRequest request) async {
     switch(_operation) {
@@ -148,6 +169,8 @@ class AuthProvider extends BaseProvider implements AuthProviderPort {
         return verifyAndRegister(request as VerifyAndRegisterRequest);
       case AuthProviderActionsEnum.register:
         return register(request as RegisterRequest);
+      case AuthProviderActionsEnum.isAuthorized:
+        return isAuthorized(request as IsAuthorizedRequest);
     }
   }
 }

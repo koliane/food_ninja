@@ -32,4 +32,8 @@ class AuthService {
   Future createNewPassword(AccessRecoveryCredentialsDto credentialsDto) async {
     return const AuthRepository().createNewPassword(credentialsDto);
   }
+
+  Future isAuthorized() async {
+    return const AuthRepository().isAuthorized();
+  }
 }

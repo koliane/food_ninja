@@ -7,33 +7,33 @@ class SecureStorageClient extends BaseClient{
   final FlutterSecureStorage _storage;
 
 
-  SecureStorageClient._(): _storage = FlutterSecureStorage();
+  SecureStorageClient._(): _storage = const FlutterSecureStorage();
 
   factory SecureStorageClient() {
     return _instance;
   }
 
-  Future<String?> read(String key) async {
-    return await _storage.read(key: key);
+  Future<String?> read(String key) {
+    return _storage.read(key: key);
   }
 
-  Future<Map<String, String>> readAll() async {
-    return await _storage.readAll();
+  Future<Map<String, String>> readAll() {
+    return _storage.readAll();
   }
 
-  Future<bool> containsKey(String key) async {
-    return await _storage.containsKey(key: key);
+  Future<bool> containsKey(String key) {
+    return _storage.containsKey(key: key);
   }
 
-  Future<void> delete(String key) async {
-    return await _storage.delete(key: key);
+  Future<void> delete(String key) {
+    return _storage.delete(key: key);
   }
 
-  Future<void> deleteAll() async {
-    return await _storage.deleteAll();
+  Future<void> deleteAll() {
+    return _storage.deleteAll();
   }
 
-  Future<void> write(String key, String? value) async {
-    return await _storage.write(key: key, value: value);
+  Future<void> write(String key, String? value) {
+    return _storage.write(key: key, value: value);
   }
 }

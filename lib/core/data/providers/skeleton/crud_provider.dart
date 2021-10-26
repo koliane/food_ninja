@@ -16,7 +16,7 @@ abstract class CrudProvider extends BaseProvider{
   Future delete(covariant  BaseRequest request);
 
   @override
-  Future send(BaseRequest request) {
+  Future send(covariant BaseRequest request) {
     switch(_operation) {
       case CrudEnum.create:
         return create(request);
@@ -28,6 +28,4 @@ abstract class CrudProvider extends BaseProvider{
         return delete(request);
     }
   }
-
-
 }

@@ -13,7 +13,7 @@ class StateFacade {
 
   StateFacade._internal(){
     app = AppState();
-    route = RouteState();
+    route = RouteState.create();
   }
 
   factory StateFacade() {

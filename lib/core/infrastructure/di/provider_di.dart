@@ -41,4 +41,8 @@ class ProviderDi extends Di {
   static AuthProviderPort getAuthCreateNewPasswordProvider() {
     return Di.di<AuthProviderPort>(instanceName: AuthProviderActionsEnum.createNewPassword.toString());
   }
+
+  static AuthProviderPort getIsAuthorizedProvider() {
+    return Di.di<AuthProviderPort>(instanceName: AuthProviderActionsEnum.isAuthorized.toString());
+  }
 }

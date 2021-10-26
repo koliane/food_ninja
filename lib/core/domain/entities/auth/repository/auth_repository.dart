@@ -1,9 +1,11 @@
 import 'package:food_ninja/core/domain/entities/auth/model/successfully_password_changed_status.dart';
 import 'package:food_ninja/core/domain/entities/auth/request/create_new_password_request.dart';
+import 'package:food_ninja/core/domain/entities/auth/request/is_authorized_request.dart';
 import 'package:food_ninja/core/domain/entities/auth/response/create_new_password_response.dart';
 
 import 'package:food_ninja/core/domain/entities/auth/model/successfully_checked_reset_code_status.dart';
 import 'package:food_ninja/core/domain/entities/auth/request/verify_reset_code_request.dart';
+import 'package:food_ninja/core/domain/entities/auth/response/is_authorized_response.dart';
 import 'package:food_ninja/core/domain/entities/auth/response/verify_reset_code_response.dart';
 
 import 'package:food_ninja/core/domain/entities/auth/dto/access_recovery_credentials_dto.dart';
@@ -30,6 +32,7 @@ import 'package:food_ninja/core/domain/entities/auth/request/register_request.da
 import 'package:food_ninja/core/domain/entities/auth/response/register_response.dart';
 
 import 'package:food_ninja/core/domain/entities/auth/port/provider/auth_provider_port.dart';
+import 'package:food_ninja/core/domain/entities/option/service/options.dart';
 import 'package:food_ninja/core/infrastructure/di/provider_di.dart';
 import '../../skeleton/repository/base_repository.dart';
 
@@ -78,6 +81,8 @@ class AuthRepository extends BaseRepository{
     final AuthorizeResponse response = await provider.send(request) as AuthorizeResponse;
 
     if(response.successfullyAuthorized) {
+      await Options().setApiAuthToken(response.token);
+
       return SuccessfullyAuthorizedStatus();
     }
 
@@ -126,6 +131,14 @@ class AuthRepository extends BaseRepository{
     if(response.successPasswordChanged) {
       return SuccessfullyPasswordChangedStatus();
     }
+  }
+
+  Future<bool> isAuthorized() async {
+    final AuthProviderPort provider = ProviderDi.getIsAuthorizedProvider();
+    final IsAuthorizedRequest request = IsAuthorizedRequest();
+    final IsAuthorizedResponse response = await provider.send(request) as IsAuthorizedResponse;
+
+    return response.isAuthorized;
   }
 }
 

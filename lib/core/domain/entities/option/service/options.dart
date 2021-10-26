@@ -6,9 +6,10 @@ import '../../skeleton/collection/base_collection.dart';
 import 'package:food_ninja/core/infrastructure/utils/scalar/scalar.dart';
 
 class Options {
-  static Options _instance = Options._internal();
+  static final Options _instance = Options._internal();
   static final Map<String, Option> _optionsMap = {};
   late bool _needToShowOnboarding;
+  late String _apiAuthToken = '';
 
 
   Options._internal();
@@ -28,11 +29,15 @@ class Options {
         case OptionsProps.needToShowOnboarding:
           _needToShowOnboarding = value;
           break;
+
+        case OptionsProps.apiAuthToken:
+          _apiAuthToken = value;
+          break;
       }
     });
   }
 
-  Future<bool> _setValue(String code, newValue) async {
+  Future _setValue(String code, newValue) async {
     final Option? option = _optionsMap[code];
     if(option == null) {
       return false;
@@ -61,6 +66,7 @@ class Options {
 
 
   bool get needToShowOnboarding => _needToShowOnboarding;
+  String get apiAuthToken => _apiAuthToken;
 
   Future<bool> setNeedToShowOnboarding(bool value) async {
     final bool updateStatus = await _setValue(OptionsProps.needToShowOnboarding, value);
@@ -71,6 +77,12 @@ class Options {
     _needToShowOnboarding = value;
 
     return true;
+  }
+
+  Future setApiAuthToken(String value) async {
+    await _setValue(OptionsProps.apiAuthToken, value);
+
+    _apiAuthToken = value;
   }
 
 }
