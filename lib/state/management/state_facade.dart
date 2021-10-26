@@ -1,5 +1,6 @@
 import 'package:food_ninja/state/management/mobx/modules/app/app_state.dart';
 import 'package:food_ninja/state/management/mobx/modules/auth/auth_state.dart';
+import 'package:food_ninja/state/management/mobx/modules/main_page/main_page_state.dart';
 import 'package:food_ninja/state/management/mobx/modules/onboarding/onboarding_state.dart';
 import 'package:food_ninja/state/management/mobx/modules/route/route_state.dart';
 
@@ -10,6 +11,7 @@ class StateFacade {
   late final RouteState route;
   OnboardingState? onboarding;
   AuthState? _auth;
+  MainPageState? _mainPageState;
 
   StateFacade._internal(){
     app = AppState();
@@ -24,6 +26,12 @@ class StateFacade {
     _auth ??= AuthState();
 
     return _auth!;
+  }
+
+  MainPageState get mainPage {
+    _mainPageState ??= MainPageState.create();
+
+    return _mainPageState!;
   }
 
 }

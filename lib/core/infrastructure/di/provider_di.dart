@@ -1,3 +1,6 @@
+import 'package:food_ninja/core/data/providers/entities/banner/api/banner_provider.dart';
+import 'package:food_ninja/core/domain/entities/banner/port/provider/banner_provider_port.dart';
+
 import 'package:food_ninja/core/data/providers/entities/auth/api/auth_provider.dart';
 import 'package:food_ninja/core/domain/entities/auth/port/provider/auth_provider_port.dart';
 import 'package:food_ninja/core/domain/entities/option/port/provider/option_crud_provider_port.dart';
@@ -44,5 +47,9 @@ class ProviderDi extends Di {
 
   static AuthProviderPort getIsAuthorizedProvider() {
     return Di.di<AuthProviderPort>(instanceName: AuthProviderActionsEnum.isAuthorized.toString());
+  }
+  
+  static BannerProviderPort getBannerGetMainBannerProvider() {
+    return Di.di<BannerProviderPort>(instanceName: BannerProviderActionsEnum.getMainBanner.toString());
   }
 }

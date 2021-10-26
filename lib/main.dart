@@ -124,13 +124,13 @@ class MyApp extends StatelessWidget {
         future: isInitialized
           ? Future.value()
           : Future.wait([
-            Bootstrap.appInit(),
-            StateBootstrap.appInit(),
-            UiBootstrap.appInit(),
-            (() async {
-              isAuthorized = await const AuthService().isAuthorized();
-            })()
-          ]),
+              Bootstrap.appInit(),
+              StateBootstrap.appInit(),
+              UiBootstrap.appInit(),
+              (() async {
+                isAuthorized = await const AuthService().isAuthorized();
+              })()
+            ]),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const SplashScreenPage();

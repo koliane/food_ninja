@@ -1,3 +1,6 @@
+import 'package:food_ninja/core/data/providers/entities/banner/api/banner_provider.dart';
+import 'package:food_ninja/core/domain/entities/banner/port/provider/banner_provider_port.dart';
+
 import 'package:food_ninja/core/data/providers/entities/auth/api/auth_provider.dart';
 import 'package:food_ninja/core/domain/entities/auth/port/provider/auth_provider_port.dart';
 
@@ -17,7 +20,7 @@ class DiBootstrap {
       ..registerLazySingleton<OptionCrudProviderPort>(() => const OptionCrudProvider.read(), instanceName: CrudEnum.read.toString())
       ..registerLazySingleton<OptionCrudProviderPort>(() => const OptionCrudProvider.update(), instanceName: CrudEnum.update.toString());
 
-    
+
     _di.registerLazySingleton<AuthProviderPort>(() => const AuthProvider.register(), instanceName: AuthProviderActionsEnum.register.toString());
     _di.registerLazySingleton<AuthProviderPort>(() => const AuthProvider.verifyAndRegister(), instanceName: AuthProviderActionsEnum.verifyAndRegister.toString());
     _di.registerLazySingleton<AuthProviderPort>(() => const AuthProvider.authorize(), instanceName: AuthProviderActionsEnum.authorize.toString());
@@ -25,6 +28,7 @@ class DiBootstrap {
     _di.registerLazySingleton<AuthProviderPort>(() => const AuthProvider.verifyResetCode(), instanceName: AuthProviderActionsEnum.verifyResetCode.toString());
     _di.registerLazySingleton<AuthProviderPort>(() => const AuthProvider.createNewPassword(), instanceName: AuthProviderActionsEnum.createNewPassword.toString());
     _di.registerLazySingleton<AuthProviderPort>(() => const AuthProvider.isAuthorized(), instanceName: AuthProviderActionsEnum.isAuthorized.toString());
+    _di.registerLazySingleton<BannerProviderPort>(() => const BannerProvider.getMainBanner(), instanceName: BannerProviderActionsEnum.getMainBanner.toString());
   }
 
   static void eventDispatcherToAppInit() {

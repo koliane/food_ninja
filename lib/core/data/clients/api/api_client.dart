@@ -72,7 +72,7 @@ class ApiClient extends BaseClient {
       'email': email,
     };
 
-    return _dio.post(ApiRoutes.access_recovery,
+    return _dio.post(ApiRoutes.accessRecovery,
         data: body,
     );
   }
@@ -85,7 +85,7 @@ class ApiClient extends BaseClient {
 
     print(body);
 
-    return _dio.post(ApiRoutes.check_reset_password_code,
+    return _dio.post(ApiRoutes.checkResetPasswordCode,
       data: body,
     );
   }
@@ -97,13 +97,17 @@ class ApiClient extends BaseClient {
       'code': code
     };
 
-    return _dio.post(ApiRoutes.new_password,
+    return _dio.post(ApiRoutes.newPassword,
       data: body,
     );
   }
 
-  Future isAuthorized() async {
-    return _dio.post(ApiRoutes.is_authorized);
+  Future isAuthorized() {
+    return _dio.post(ApiRoutes.isAuthorized);
+  }
+
+  Future getBanner() {
+    return _dio.get(ApiRoutes.mainBanner);
   }
 
   Future restaurants() async {
