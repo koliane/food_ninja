@@ -11,7 +11,9 @@ class ApiRoutes {
   static const hasMessages = '/flutter_food_delivery/has_messages';
   static const basketProductsQuantity = '/flutter_food_delivery/basket/products_quantity';
   static const restaurants = '/flutter_food_delivery/restaurants';
-  static const menu = '/flutter_food_delivery/menu';
+  static const nearestRestaurants = '/flutter_food_delivery/restaurants/nearest';
+  static const dishes = '/flutter_food_delivery/dishes';
+  static const popularDishes = '/flutter_food_delivery/dishes/popular';
 
 
 }

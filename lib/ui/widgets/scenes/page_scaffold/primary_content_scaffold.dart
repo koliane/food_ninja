@@ -61,6 +61,7 @@ class PrimaryContentScaffold extends StatelessWidget {
               ],
             ),
           ),
+          /*
           const SizedBox(height: 20),
 
           Padding(
@@ -86,6 +87,7 @@ class PrimaryContentScaffold extends StatelessWidget {
               ],
             ),
           ),
+          */
 
           const SizedBox(height: 20,),
           body,

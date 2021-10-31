@@ -5,8 +5,15 @@ import 'sqlite/sqlite_bootstrap.dart';
 
 class Bootstrap {
   static Future appInit() {
-    DiBootstrap.eventDispatcherToAppInit();
-    DiBootstrap.providersToAppInit();
+    //TODO Рефакторинг. Удалить
+    try {
+      DiBootstrap.eventDispatcherToAppInit();
+      DiBootstrap.providersToAppInit();
+    }catch(e) {}
+
+
+    // DiBootstrap.eventDispatcherToAppInit();
+    // DiBootstrap.providersToAppInit();
 
     return Future.wait([
       SQLiteBootstrap.connect().then((value){

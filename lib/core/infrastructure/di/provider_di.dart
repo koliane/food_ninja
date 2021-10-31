@@ -1,3 +1,9 @@
+import 'package:food_ninja/core/data/providers/entities/dish/api/dish_provider.dart';
+import 'package:food_ninja/core/domain/entities/dish/port/provider/dish_provider_port.dart';
+
+import 'package:food_ninja/core/data/providers/entities/restaurant/api/restaurant_provider.dart';
+import 'package:food_ninja/core/domain/entities/restaurant/port/provider/restaurant_provider_port.dart';
+
 import 'package:food_ninja/core/data/providers/entities/banner/api/banner_provider.dart';
 import 'package:food_ninja/core/domain/entities/banner/port/provider/banner_provider_port.dart';
 
@@ -51,5 +57,13 @@ class ProviderDi extends Di {
   
   static BannerProviderPort getBannerGetMainBannerProvider() {
     return Di.di<BannerProviderPort>(instanceName: BannerProviderActionsEnum.getMainBanner.toString());
+  }
+  
+  static RestaurantProviderPort getRestaurantGetNearestRestaurantsProvider() {
+    return Di.di<RestaurantProviderPort>(instanceName: RestaurantProviderActionsEnum.getNearestRestaurants.toString());
+  }
+  
+  static DishProviderPort getDishGetPopularDishesProvider() {
+    return Di.di<DishProviderPort>(instanceName: DishProviderActionsEnum.getPopularDishes.toString());
   }
 }

@@ -1,10 +1,17 @@
 class BaseException implements Exception {
-  final String? message;
+  final String message;
+  final String? customerMessage;
+  final Exception? realException;
 
-  BaseException([this.message]);
+  BaseException(this.message, {
+    this.realException,
+    this.customerMessage,
+  });
 
   @override
   String toString() {
-    return message.toString();
+    return
+      "$message\r\n${customerMessage ?? ''}${realException != null ? realException.toString() : ''}"
+    ;
   }
 }

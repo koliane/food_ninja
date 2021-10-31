@@ -25,7 +25,6 @@ import 'package:food_ninja/ui/widgets/pages/restaurant_detail_page/restaurant_de
 import 'package:food_ninja/ui/widgets/pages/restaurants_page/restaurants_page.dart';
 import 'package:food_ninja/ui/widgets/pages/splash_screen_page/splash_screen_page.dart';
 import 'package:food_ninja/ui/service/app/app_global_keys.dart';
-import 'package:food_ninja/ui/widgets/pages/test/test_page.dart';
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 

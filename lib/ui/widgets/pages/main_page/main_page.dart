@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:food_ninja/core/domain/entities/dish/model/dish.dart';
+import 'package:food_ninja/core/domain/entities/restaurant/model/restaurant.dart';
 import 'package:food_ninja/state/management/mobx/modules/main_page/main_page_state.dart';
 import 'package:food_ninja/state/management/state_facade.dart';
 import 'package:food_ninja/ui/widgets/components/food_card/food_card.dart';
@@ -22,60 +24,58 @@ class MainPage extends StatelessWidget {
         showBottomAppBar: true,
         body: Column(
           children: [
-
-
             Observer(
               builder: (_) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
-                  // child: Image.network('https://icrab.pro/themes/icrab/assets/images/food_ninja/banner.png',),
                   child: state.bannerUrl.isNotEmpty ? Image.network(state.bannerUrl,) : null,
                 );
               }
             ),
             const SizedBox(height: 25,),
-            const SizedBox(
+            SizedBox(
               height: 224,
-              child: SingleLineListSection(
-                title: 'Nearest Restaurant',
-                moreLink: '',
-                children: [
-                  RestaurantCard(
-                      image: 'https://icrab.pro/themes/icrab/assets/images/food_ninja/restaurants/vegan_resto.png',
-                      title: 'Vegan Resto',
-                      subtitle: '12 Mins'
-                  ),
-                  RestaurantCard(
-                      image: 'https://icrab.pro/themes/icrab/assets/images/food_ninja/restaurants/healthy_food.png',
-                      title: 'Healthy Food',
-                      subtitle: '8 Mins'
-                  ),
-                  RestaurantCard(
-                      image: 'https://icrab.pro/themes/icrab/assets/images/food_ninja/restaurants/healthy_food.png',
-                      title: 'Healthy Food',
-                      subtitle: '8 Mins'
-                  )
-                ],
+              child: Observer(
+                builder: (_) {
+                  final restaurants = state.nearestRestaurants.toList();
+
+                  return SingleLineListSection(
+                    title: 'Nearest Restaurant',
+                    moreLink: '',
+                    children: [
+                      for(Restaurant restaurant in restaurants)
+                        RestaurantCard(
+                            image: restaurant.previewImage ?? '',
+                            title: restaurant.name,
+                            subtitle: restaurant.deliveryTime != null
+                                ? '${restaurant.deliveryTime!.inMinutes} Mins'
+                                : ''
+                        ),
+                    ],
+                  );
+                },
               ),
             ),
             const SizedBox(height: 20,),
-            const VerticalListSection(
-                title: 'Popular Menu',
-                moreLink: '',
-                children: [
-                  FoodCard(
-                      image: 'https://icrab.pro/themes/icrab/assets/images/food_ninja/food/green_noodle.jpg',
-                      title: 'Green Noodle',
-                      subtitle: 'Noodle Home',
-                      price: 15
-                  ),
-                  FoodCard(
-                      image: 'https://icrab.pro/themes/icrab/assets/images/food_ninja/food/green_noodle.jpg',
-                      title: 'Green Noodle',
-                      subtitle: 'Noodle Home',
-                      price: 15
-                  )
-                ]
+
+            Observer(
+              builder: (_){
+                final  dishes = state.popularDishes.toList();
+
+                return VerticalListSection(
+                    title: 'Popular Menu',
+                    moreLink: '',
+                    children: [
+                      for(Dish dish in dishes)
+                        FoodCard(
+                          image: dish.previewImage ?? '',
+                          title: dish.name ?? '',
+                          subtitle: dish.restaurant == null ? '' : dish.restaurant!.name,
+                          price: dish.price ?? 0
+                        ),
+                    ]
+                );
+              },
             ),
 
           ],

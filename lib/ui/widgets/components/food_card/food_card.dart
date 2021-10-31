@@ -33,35 +33,44 @@ class FoodCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CardImageContainer(image: image),
-              const SizedBox(width: 20,),
-              Column(
-                // mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title,
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        height: 1
-                    ),
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CardImageContainer(image: image),
+                const SizedBox(width: 20,),
+                Expanded(
+                  child: Column(
+                    // mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(title,
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            height: 1
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(height: 5,),
+                      Text(subtitle,
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: const Color(secondaryBlackColor).withOpacity(0.3),
+                            height: 1
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 5,),
-                  Text(subtitle,
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: const Color(secondaryBlackColor).withOpacity(0.3),
-                        height: 1
-                    ),
-                  ),
-                ],
-              )
-            ],
+                )
+              ],
+            ),
           ),
           Text('\$$price',
             style: TextStyle(

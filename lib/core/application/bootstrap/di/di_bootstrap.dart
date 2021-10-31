@@ -1,3 +1,9 @@
+import 'package:food_ninja/core/data/providers/entities/dish/api/dish_provider.dart';
+import 'package:food_ninja/core/domain/entities/dish/port/provider/dish_provider_port.dart';
+
+import 'package:food_ninja/core/data/providers/entities/restaurant/api/restaurant_provider.dart';
+import 'package:food_ninja/core/domain/entities/restaurant/port/provider/restaurant_provider_port.dart';
+
 import 'package:food_ninja/core/data/providers/entities/banner/api/banner_provider.dart';
 import 'package:food_ninja/core/domain/entities/banner/port/provider/banner_provider_port.dart';
 
@@ -29,6 +35,8 @@ class DiBootstrap {
     _di.registerLazySingleton<AuthProviderPort>(() => const AuthProvider.createNewPassword(), instanceName: AuthProviderActionsEnum.createNewPassword.toString());
     _di.registerLazySingleton<AuthProviderPort>(() => const AuthProvider.isAuthorized(), instanceName: AuthProviderActionsEnum.isAuthorized.toString());
     _di.registerLazySingleton<BannerProviderPort>(() => const BannerProvider.getMainBanner(), instanceName: BannerProviderActionsEnum.getMainBanner.toString());
+    _di.registerLazySingleton<RestaurantProviderPort>(() => const RestaurantProvider.getNearestRestaurants(), instanceName: RestaurantProviderActionsEnum.getNearestRestaurants.toString());
+    _di.registerLazySingleton<DishProviderPort>(() => const DishProvider.getPopularDishes(), instanceName: DishProviderActionsEnum.getPopularDishes.toString());
   }
 
   static void eventDispatcherToAppInit() {

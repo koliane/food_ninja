@@ -110,7 +110,19 @@ class ApiClient extends BaseClient {
     return _dio.get(ApiRoutes.mainBanner);
   }
 
+  Future nearestRestaurants() async {
+    return _dio.get(ApiRoutes.nearestRestaurants);
+  }
+
   Future restaurants() async {
     return _dio.get(ApiRoutes.restaurants);
+  }
+
+  Future dishes() async {
+    return _dio.get(ApiRoutes.dishes);
+  }
+
+  Future popularDishes() async {
+    return _dio.get(ApiRoutes.popularDishes);
   }
 }
