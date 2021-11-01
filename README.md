@@ -2,7 +2,6 @@
 
 ## Верстка
 
----
 
 - [x] [Splash Screen](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/splash_screen.png)
 - [x] [Onboarding](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/onboarding_1.png) 
@@ -25,14 +24,20 @@
 - [ ]  Профиль
 - [x]  [Страница заказа](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/order_detail.png)
 
+
 ## **Логика**
 
----
 
-- [x]  Сплеш скрин
-- [x]  Онбординг
-- [ ]  Регистрация
-
-- [ ]  Авторизации
-- [ ]  Восстановление пароля
-- [ ]  Логика страницы успешности авторизации/регистрации/смены пароля
+- [x]  Splash Screen
+- [x]  Onboarding
+- [x]  Страница авторизации
+- [x]  Страница регистрации
+- [x]  Страница статуса
+- [x]  Страница верификации кода
+- [x]  Забыли пароль? Ввод контакта, к которому забыли доступ
+- [x]  Новый пароль
+- [x]  Главная страница
+- [ ]  Список ресторанов
+- [ ]  Популярное меню
+- [ ]  Детальная страница ресторана
+- [ ]  Детальная страница меню
