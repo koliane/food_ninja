@@ -2,27 +2,41 @@
 
 ## Верстка
 
-
-- [x] Splash Screen ![Splash Screen](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/splash_screen.png)
-- [x] Onboarding ![Onboarding](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/onboarding_1.png)
-      Onboarding 2 ![(Onboarding 2)](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/onboarding_2.png)
-- [x] Страница авторизации ![Страница авторизации](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/authorization.png)
-- [x] Страница регистрации ![Страница регистрации](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/registration_page.png)
-- [x] Страница статуса ![Страница статуса](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/status.png)
-- [x] Страница верификации кода ![Страница верификации кода](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/verification.png)
-- [x] Забыли пароль? ![Забыли пароль? Ввод контакта, к которому забыли доступ](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/forgot_password.png)
-- [x] Новый пароль ![Новый пароль](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/new_password.png)
-- [x] Главная страница ![Главная страница](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/main_page.png) 
-  ![(продолжение главной страницы)](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/main_page2.png)  
-- [x] Список ресторанов ![Список ресторанов](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/restaurants.png)
-- [x] Фильтр ![Фильтр](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/filter.png)
-- [x] Популярное меню ![Популярное меню](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/menu.png)
-- [x] Детальная страница ресторана ![Детальная страница ресторана](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/restaurant_detail.png) 
-  ![(продолжение детальной страницы ресторана)](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/restaurant_detail2.png)
-- [x] Детальная страница меню [Детальная страница меню](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/food_detail.png)
- ![(продолжение)](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/food_detail2.png)
+- [x] Splash Screen   
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/splash_screen.png" width="200"/>
+- [x] Onboarding  
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/onboarding_1.png" width="200"/>
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/onboarding_2.png" width="200"/>
+- [x] Страница авторизации  
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/authorization.png" width="200"/>
+- [x] Страница регистрации  
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/registration_page.png" width="200"/>
+- [x] Страница статуса  
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/status.png" width="200"/>
+- [x] Страница верификации кода  
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/verification.png" width="200"/>
+- [x] Забыли пароль? Ввод контакта, к которому забыли доступ  
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/forgot_password.png" width="200"/>
+- [x] Новый пароль  
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/new_password.png" width="200"/>
+- [x] Главная страница  
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/main_page.png" width="200"/>
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/main_page2.png" width="200"/>
+- [x] Список ресторанов  
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/restaurants.png" width="200"/>
+- [x] Фильтр  
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/filter.png" width="200"/>
+- [x] Популярное меню  
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/menu.png" width="200"/>
+- [x] Детальная страница ресторана  
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/restaurant_detail.png" width="200"/>
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/restaurant_detail2.png" width="200"/>
+- [x] Детальная страница меню  
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/food_detail.png" width="200"/>
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/food_detail2.png" width="200"/>
 - [ ]  Профиль
-- [x] Страница заказа ![Страница заказа](https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/order_detail.png)
+- [x] Страница заказа  
+  <img src="https://icrab.pro/themes/icrab/assets/images/food_ninja/screens/order_detail.png" width="200"/>
 
 
 ## **Логика**
